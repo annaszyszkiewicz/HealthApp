@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApp">
-        <activity android:name=".MedicinesActivity"></activity>
-        <activity android:name=".RemindersActivity" />
+        <activity android:name=".RemindersSetterActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".MedicinesActivity" />
+        <activity android:name=".AllRemindersActivity" />
         <activity android:name=".ResultInterpretation" />
         <activity android:name=".Results" />
         <activity android:name=".UserActivity" />

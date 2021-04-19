@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">HealthApp</string>
+
+    <string name="btnNewUser">Utwóz nowe konto</string>
+
+    <string name="txtName">Imię</string>
+    <string name="txtSurname">Nazwisko</string>
+    <string name="txtDateOfBirth">Data urodzenia</string>
+    <string name="txtHeight">Wzrost [cm]</string>
+    <string name="btnCreateUser">Utwórz</string>
+
+    <string name="title_activity_user_history_activity">user_history_activity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <string name="btnSaveResult">Zapisz</string>
+
+    <string name="btnMedicineRem">Przypomnienia o wzięciu leków</string>
+    <string name="btnPressureRem">Przypomnienie o pomiarze ciśnienia</string>
+    <string name="btnPulseRem">Przypomnienie o pomiarze tętna</string>
+    <string name="btnGlucoseRem">Przypomnienie o pomiarze glukozy</string>
+    <string name="btnWeightRem">Przypomnienie o pomiarze wagi ciała</string>
+    <string name="btnMealRem">Przypomnienie o spożyciu posiłku</string>
+    <string name="btnWaterRem">Przypomnienie o wypiciu wody</string>
+    <string name="btnActivityRem">Przypomnienie o wykonaniu aktyności</string>
+
 </resources>

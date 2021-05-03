@@ -23,6 +23,47 @@
         app:layout_constraintVertical_bias="0.120000005"
         app:layout_constraintVertical_chainStyle="packed" />
 
+    <TextView
+        android:id="@+id/txtSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="@string/txtSurname"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtDateOfBirth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtSurname"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+    <TextView
+        android:id="@+id/txtDateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="@string/txtDateOfBirth"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtHeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtDateOfBirth"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSurname" />
+
+    <TextView
+        android:id="@+id/txtHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtHeight"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtHeight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDateOfBirth" />
+
     <EditText
         android:id="@+id/editTxtName"
         android:layout_width="wrap_content"
@@ -46,16 +87,6 @@
         app:layout_constraintStart_toEndOf="@+id/txtSurname"
         app:layout_constraintStart_toStartOf="@+id/editTxtName" />
 
-    <EditText
-        android:id="@+id/editTxtHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtHeight"
-        app:layout_constraintStart_toEndOf="@+id/txtHeight"
-        app:layout_constraintStart_toStartOf="@+id/editTxtDateOfBirth" />
 
     <EditText
         android:id="@+id/editTxtDateOfBirth"
@@ -68,46 +99,16 @@
         app:layout_constraintStart_toEndOf="@+id/txtDateOfBirth"
         app:layout_constraintStart_toStartOf="@+id/editTxtSurname" />
 
-    <TextView
-        android:id="@+id/txtDateOfBirth"
+    <EditText
+        android:id="@+id/editTxtHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:text="@string/txtDateOfBirth"
+        android:ems="10"
+        android:inputType="numberDecimal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtHeight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTxtDateOfBirth"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSurname" />
-
-    <TextView
-        android:id="@+id/txtSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:text="@string/txtSurname"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtDateOfBirth"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTxtSurname"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName" />
-
-    <TextView
-        android:id="@+id/txtHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtHeight"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTxtHeight"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDateOfBirth" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtHeight"
+        app:layout_constraintStart_toEndOf="@+id/txtHeight"
+        app:layout_constraintStart_toStartOf="@+id/editTxtDateOfBirth" />
 
     <Button
         android:id="@+id/btnCreateUser"

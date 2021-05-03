@@ -40,5 +40,6 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:layout_marginBottom="8dp"
-        android:text="@string/btnNewUser" />
+        android:text="@string/btnNewUser"
+        android:onClick="onClickCreateUser"/>
 </LinearLayout>

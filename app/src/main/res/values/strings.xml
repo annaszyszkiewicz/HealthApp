@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">HealthApp</string>
 
-    <string name="btnNewUser">Utwóz nowe konto</string>
+    <string name="btnNewUser">Utwórz konto</string>
 
     <string name="txtName">Imię</string>
     <string name="txtSurname">Nazwisko</string>
     <string name="txtDateOfBirth">Data urodzenia</string>
     <string name="txtHeight">Wzrost [cm]</string>
-    <string name="btnCreateUser">Utwórz</string>
+    <string name="btnCreateUser">Zapisz</string>
 
     <string name="title_activity_user_history_activity">user_history_activity</string>
     <string name="tab_text_1">Tab 1</string>

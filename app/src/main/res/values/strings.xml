@@ -1,20 +1,26 @@
 <resources>
     <string name="app_name">HealthApp</string>
 
-    <string name="btnNewUser">Utwórz konto</string>
+    <!--    main-->
+    <string name="btnNewUser">Utwórz nowe konto</string>
+    <string name="btnSettings">Ustawienia</string>
 
+    new_user
     <string name="txtName">Imię</string>
     <string name="txtSurname">Nazwisko</string>
     <string name="txtDateOfBirth">Data urodzenia</string>
     <string name="txtHeight">Wzrost [cm]</string>
     <string name="btnCreateUser">Zapisz</string>
 
+
     <string name="title_activity_user_history_activity">user_history_activity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
 
+    <!--    results-->
     <string name="btnSaveResult">Zapisz</string>
 
+    <!--    all_reminders-->
     <string name="btnMedicineRem">Przypomnienia o wzięciu leków</string>
     <string name="btnPressureRem">Przypomnienie o pomiarze ciśnienia</string>
     <string name="btnPulseRem">Przypomnienie o pomiarze tętna</string>
@@ -24,4 +30,24 @@
     <string name="btnWaterRem">Przypomnienie o wypiciu wody</string>
     <string name="btnActivityRem">Przypomnienie o wykonaniu aktyności</string>
 
+    <!--    user-->
+    <string name="btnHistoryStats">Historia i statystyki</string>
+    <string name="btnAddResults">Dodaj wyniki badań</string>
+    <string name="btnReminders">Przypomnienia</string>
+
+
+    <!-- history and stats: -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="history_fragment">"Historia"</string>
+    <string name="stats_fragment">Statystyki</string>
+
+    <!-- results-->
+    <string-array name="selectType">
+        <item>ciśnienie krwi</item>
+        <item>tętno</item>
+        <item>poziom glukozy</item>
+        <item>temperatura ciała</item>
+        <item>waga</item>
+
+    </string-array>
 </resources>

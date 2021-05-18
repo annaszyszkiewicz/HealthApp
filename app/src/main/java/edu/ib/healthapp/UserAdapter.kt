@@ -11,8 +11,6 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-
-//class UserAdapter(private val usersList: List<RecyclerItemActivit>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 class UserAdapter(val context: Context, val db: SQLiteDatabase) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -22,7 +20,6 @@ class UserAdapter(val context: Context, val db: SQLiteDatabase) :
     }
 
     override fun getItemCount(): Int {
-        //usersList.size
 
         val cursor = db.query(
             TableInfo.TABLE_NAME, null,
@@ -47,12 +44,10 @@ class UserAdapter(val context: Context, val db: SQLiteDatabase) :
             null, null, null
         )
 
-
         if (cursor.moveToFirst()) {
-            name.setText(cursor.getString(1) + " " + cursor.getString(2))
+            val userName = cursor.getString(1) + " " + cursor.getString(2)
+            name.setText(userName)
         }
-        // val currentItem = usersList[position]
-        // holder.nameView.text = currentItem.name
 
         item.setOnLongClickListener(object : View.OnLongClickListener {
             override fun onLongClick(v: View?): Boolean {
@@ -74,10 +69,29 @@ class UserAdapter(val context: Context, val db: SQLiteDatabase) :
                 return true
             }
         })
-        cursor.close()
+
+        item.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent_edit = Intent(context, UserActivity::class.java)
+
+                val name_edit = cursor.getString(1)
+                val suranem_edit = cursor.getString(2)
+                val birth_edit = cursor.getString(3)
+                val height_edit = cursor.getString(4)
+                val id_edit = holder.absoluteAdapterPosition.plus(1).toString()
+
+                intent_edit.putExtra("name", name_edit)
+                intent_edit.putExtra("surname", suranem_edit)
+                intent_edit.putExtra("birth", birth_edit)
+                intent_edit.putExtra("height", height_edit)
+                intent_edit.putExtra("ID", id_edit)
+
+                context.startActivity(intent_edit)
+            }
+        })
     }
 
 
     class UserViewHolder(val view: View) : RecyclerView.ViewHolder(view)
-    // { val nameView: TextView = itemView.findViewById(R.id.txtUserName) }
+
 }

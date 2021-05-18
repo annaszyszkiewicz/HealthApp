@@ -10,11 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApp">
         <activity android:name=".RemindersSetterActivity" />
+        <activity android:name=".HistoryStatsActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".MedicinesActivity" />
         <activity android:name=".AllRemindersActivity" />
-        <activity android:name=".ResultInterpretation" />
-        <activity android:name=".Results" />
+        <activity android:name=".ResultInterpretationActivity" />
+        <activity android:name=".ResultsActivity" />
         <activity android:name=".UserActivity" />
         <activity android:name=".NewUserActivity" />
         <activity android:name=".MainActivity">

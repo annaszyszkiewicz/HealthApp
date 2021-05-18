@@ -8,8 +8,10 @@
 
     <Button
         android:id="@+id/btnPressureReminder"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="@string/btnPressureRem"
         app:layout_constraintBottom_toTopOf="@+id/btnPulseReminder"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,8 +22,10 @@
 
     <Button
         android:id="@+id/btnMealReminder"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="@string/btnMealRem"
         app:layout_constraintBottom_toTopOf="@+id/btnWaterReminder"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,8 +36,10 @@
 
     <Button
         android:id="@+id/btnGlucoseReminder"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="@string/btnGlucoseRem"
         app:layout_constraintBottom_toTopOf="@+id/btnWeightReminder"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,8 +50,10 @@
 
     <Button
         android:id="@+id/btnWaterReminder"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="@string/btnWaterRem"
         app:layout_constraintBottom_toTopOf="@+id/btnActivityReminder"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,9 +64,11 @@
 
     <Button
         android:id="@+id/btnMedicineReminder"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="100dp"
+        android:layout_marginRight="30dp"
         android:text="@string/btnMedicineRem"
         app:layout_constraintBottom_toTopOf="@+id/btnPressureReminder"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,8 +79,10 @@
 
     <Button
         android:id="@+id/btnActivityReminder"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="100dp"
         android:text="@string/btnActivityRem"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -81,8 +93,10 @@
 
     <Button
         android:id="@+id/btnWeightReminder"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="@string/btnWeightRem"
         app:layout_constraintBottom_toTopOf="@+id/btnMealReminder"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,8 +107,10 @@
 
     <Button
         android:id="@+id/btnPulseReminder"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="@string/btnPulseRem"
         app:layout_constraintBottom_toTopOf="@+id/btnGlucoseReminder"
         app:layout_constraintEnd_toEndOf="parent"

@@ -6,25 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".ResultsActivity">
 
-    <Button
-        android:id="@+id/btnSaveResult"
+    <TextView
+        android:id="@+id/txtUnit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btnSaveResult"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/txtUnit"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtResult"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTxtResult"
+        app:layout_constraintTop_toTopOf="@+id/editTxtResult" />
+
+    <EditText
+        android:id="@+id/editTxtResultTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveResult"
+        app:layout_constraintEnd_toEndOf="@+id/btnSaveResult"
+        app:layout_constraintStart_toStartOf="@+id/btnSaveResult"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtResultDate" />
+
+    <EditText
+        android:id="@+id/editTxtResultDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/editTxtResultTime"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtResultTime"
+        app:layout_constraintStart_toStartOf="@+id/editTxtResultTime"
         app:layout_constraintTop_toBottomOf="@+id/editTxtResult" />
 
     <Spinner
         android:id="@+id/selectResultType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:entries="@array/selectType"
         app:layout_constraintBottom_toTopOf="@+id/editTxtResult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtResult"
+        app:layout_constraintStart_toStartOf="@+id/editTxtResult"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -32,12 +58,23 @@
         android:id="@+id/editTxtResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/btnSaveResult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editTxtResultDate"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtResultDate"
+        app:layout_constraintStart_toStartOf="@+id/editTxtResultDate"
         app:layout_constraintTop_toBottomOf="@+id/selectResultType" />
+
+    <Button
+        android:id="@+id/btnSaveResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnSaveResult"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtResultTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

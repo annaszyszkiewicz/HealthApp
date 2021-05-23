@@ -22,7 +22,7 @@ class UserAdapter(val context: Context, val db: SQLiteDatabase) :
     override fun getItemCount(): Int {
 
         val cursor = db.query(
-            TableInfo.TABLE_NAME, null,
+            TableInfo.TABLE_USER, null,
             null, null,
             null, null, null
         )
@@ -39,7 +39,7 @@ class UserAdapter(val context: Context, val db: SQLiteDatabase) :
         val context: Context = holder.view.context
 
         val cursor = db.query(
-            TableInfo.TABLE_NAME, null,
+            TableInfo.TABLE_USER, null,
             BaseColumns._ID + "=?", arrayOf(holder.absoluteAdapterPosition.plus(1).toString()),
             null, null, null
         )

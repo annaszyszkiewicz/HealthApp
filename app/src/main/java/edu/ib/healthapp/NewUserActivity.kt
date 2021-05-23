@@ -43,21 +43,28 @@ class NewUserActivity : AppCompatActivity() {
             value.put(TableInfo.TABLE_COLUMN_HEIGHT, height)
 
             if (intent.hasExtra("ID")) {
-
-                db.update(
-                    TableInfo.TABLE_NAME,
-                    value,
-                    BaseColumns._ID + "=?",
-                    arrayOf(intent.getStringExtra("ID"))
-                )
-                Toast.makeText(
-                    applicationContext,
-                    "Zmiany zapisano",
-                    Toast.LENGTH_SHORT
-                ).show()
+                if (!name.isEmpty() && !surname.isEmpty() && !birth.isEmpty() && !height.isEmpty()) {
+                    db.update(
+                        TableInfo.TABLE_USER,
+                        value,
+                        BaseColumns._ID + "=?",
+                        arrayOf(intent.getStringExtra("ID"))
+                    )
+                    Toast.makeText(
+                        applicationContext,
+                        "Zmiany zapisano",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        applicationContext,
+                        "Nie wprowadzono potrzebnych danych",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             } else {
-                if (!name.isEmpty() || !surname.isEmpty()) {
-                    db.insertOrThrow(TableInfo.TABLE_NAME, null, value)
+                if (!name.isEmpty() && !surname.isEmpty() && !birth.isEmpty() && !height.isEmpty()) {
+                    db.insertOrThrow(TableInfo.TABLE_USER, null, value)
                     createUserToast.show()
                 } else {
                     Toast.makeText(

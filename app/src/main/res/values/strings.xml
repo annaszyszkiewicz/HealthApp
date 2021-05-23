@@ -48,6 +48,7 @@
         <item>poziom glukozy</item>
         <item>temperatura ciała</item>
         <item>waga</item>
-
     </string-array>
+    <string name="txtUnit">mm Hg</string>
+
 </resources>

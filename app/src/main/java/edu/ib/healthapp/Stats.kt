@@ -1,11 +1,12 @@
 package edu.ib.healthapp
 
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-class Stats : Fragment() {
+class Stats(val userId: Int,val db: SQLiteDatabase) : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

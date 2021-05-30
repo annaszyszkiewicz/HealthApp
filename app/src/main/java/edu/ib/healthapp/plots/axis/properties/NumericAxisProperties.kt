@@ -4,4 +4,5 @@ class NumericAxisProperties: AxisProperties() {
     var max=10;
     var min=0;
     var step=2;
+    var autoRanging=true;
 }

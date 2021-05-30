@@ -60,7 +60,7 @@ class Plot<X,Y>: ViewGroup {
             else ->throw IllegalTypeException(xClass.simpleName)
         }
         when(yClass.simpleName){
-            "double","int","String"->{
+            "double","int"->{
                 yAxis=Axis(xClass,yClass,this,AxisType.Y,context)
             }
             else ->throw IllegalTypeException("")
@@ -100,29 +100,83 @@ class Plot<X,Y>: ViewGroup {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val width=MeasureSpec.getSize(widthMeasureSpec)
         val height=MeasureSpec.getSize(heightMeasureSpec)
+        if(legend.visibility == VISIBLE) {
+            plotCanvas.x = 0.155f * width;
+            plotCanvas.y = 0.1f * height;
+            plotCanvas.measure(
+                MeasureSpec.makeMeasureSpec(
+                    (0.635 * width).toInt(),
+                    MeasureSpec.EXACTLY
+                ), MeasureSpec.makeMeasureSpec((0.735 * height).toInt(), MeasureSpec.EXACTLY)
+            )
 
-        plotCanvas.x=0.155f*width;
-        plotCanvas.y=0.1f*height;
-        plotCanvas.measure(MeasureSpec.makeMeasureSpec((0.635*width).toInt(),MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec((0.735*height).toInt(),MeasureSpec.EXACTLY))
+
+            xAxis.x = 0.15f * width
+            xAxis.y = 0.830f * height
+            xAxis.measure(
+                MeasureSpec.makeMeasureSpec((0.64 * width).toInt(), MeasureSpec.EXACTLY),
+                (MeasureSpec.makeMeasureSpec((0.16 * height).toInt(), MeasureSpec.EXACTLY))
+            )
+
+            yAxis.x = 0f
+            yAxis.y = 0.1f * height
+
+            yAxis.measure(
+                MeasureSpec.makeMeasureSpec((0.16 * width).toInt(), MeasureSpec.EXACTLY),
+                (MeasureSpec.makeMeasureSpec((0.74 * height).toInt(), MeasureSpec.EXACTLY))
+            )
+
+            textTitle.y = 0.02f * height
+            textTitle.measure(
+                MeasureSpec.makeMeasureSpec(
+                    (0.5 * width).toInt(),
+                    MeasureSpec.AT_MOST
+                ), MeasureSpec.makeMeasureSpec((0.06 * height).toInt(), MeasureSpec.EXACTLY)
+            )
+            textTitle.x = 0.5f * width - textTitle.measuredWidth / 2f
+
+            legend.x = 0.85f * width
+            legend.y = 0.3f * height
+            legend.measure(
+                MeasureSpec.makeMeasureSpec((0.2 * width).toInt(), MeasureSpec.EXACTLY),
+                (MeasureSpec.makeMeasureSpec((0.5 * height).toInt(), MeasureSpec.EXACTLY))
+            )
+        } else {
+            plotCanvas.x = 0.155f * width;
+            plotCanvas.y = 0.1f * height;
+            plotCanvas.measure(
+                MeasureSpec.makeMeasureSpec(
+                    (0.785 * width).toInt(),
+                    MeasureSpec.EXACTLY
+                ), MeasureSpec.makeMeasureSpec((0.735 * height).toInt(), MeasureSpec.EXACTLY)
+            )
 
 
-        xAxis.x=0.15f*width
-        xAxis.y=0.830f*height
-        xAxis.measure(MeasureSpec.makeMeasureSpec((0.64*width).toInt(), MeasureSpec.EXACTLY),(MeasureSpec.makeMeasureSpec((0.16*height).toInt(),MeasureSpec.EXACTLY)))
+            xAxis.x = 0.15f * width
+            xAxis.y = 0.830f * height
+            xAxis.measure(
+                MeasureSpec.makeMeasureSpec((0.79 * width).toInt(), MeasureSpec.EXACTLY),
+                (MeasureSpec.makeMeasureSpec((0.16 * height).toInt(), MeasureSpec.EXACTLY))
+            )
 
-        yAxis.x=0f
-        yAxis.y=0.1f*height
+            yAxis.x = 0f
+            yAxis.y = 0.1f * height
 
-        yAxis.measure(MeasureSpec.makeMeasureSpec((0.16*width).toInt(), MeasureSpec.EXACTLY),(MeasureSpec.makeMeasureSpec((0.74*height).toInt(),MeasureSpec.EXACTLY)))
+            yAxis.measure(
+                MeasureSpec.makeMeasureSpec((0.16 * width).toInt(), MeasureSpec.EXACTLY),
+                (MeasureSpec.makeMeasureSpec((0.74 * height).toInt(), MeasureSpec.EXACTLY))
+            )
 
-        textTitle.y=0.02f*height
-        textTitle.measure(MeasureSpec.makeMeasureSpec((0.5*width).toInt(),MeasureSpec.AT_MOST),MeasureSpec.makeMeasureSpec((0.06*height).toInt(),MeasureSpec.EXACTLY))
-        textTitle.x=0.5f*width-textTitle.measuredWidth/2f
+            textTitle.y = 0.02f * height
+            textTitle.measure(
+                MeasureSpec.makeMeasureSpec(
+                    (0.5 * width).toInt(),
+                    MeasureSpec.AT_MOST
+                ), MeasureSpec.makeMeasureSpec((0.06 * height).toInt(), MeasureSpec.EXACTLY)
+            )
+            textTitle.x = 0.5f * width - textTitle.measuredWidth / 2f
 
-        legend.x=0.85f*width
-        legend.y=0.3f*height
-        legend.measure(MeasureSpec.makeMeasureSpec((0.2*width).toInt(), MeasureSpec.EXACTLY),(MeasureSpec.makeMeasureSpec((0.5*height).toInt(),MeasureSpec.EXACTLY)))
-
+        }
 
         setMeasuredDimension(widthMeasureSpec,heightMeasureSpec)
 
@@ -139,6 +193,11 @@ class Plot<X,Y>: ViewGroup {
 
     override fun shouldDelayChildPressedState(): Boolean {
         return false;
+    }
+
+    fun setLegendVisibility(visible: Boolean){
+        if(visible) legend.visibility=VISIBLE;
+        else legend.visibility= INVISIBLE;
     }
 
 
@@ -173,18 +232,27 @@ class Plot<X,Y>: ViewGroup {
                 }
 
             }
-            (xAxis.properties as NumericAxisProperties).max= floor(xMaxValue + 1).toInt()
-            (xAxis.properties as NumericAxisProperties).min= floor(xMinValue-1).toInt()
-            (yAxis.properties as NumericAxisProperties).max= floor(yMaxValue+1).toInt()
-            (yAxis.properties as NumericAxisProperties).min= floor(yMinValue-1).toInt()
-            while(((xAxis.properties as NumericAxisProperties).max-(xAxis.properties as NumericAxisProperties).min)%xAxis.properties.labelCount!=0){
-                (xAxis.properties as NumericAxisProperties).max++;
+            if(yAxis.properties is NumericAxisProperties && (yAxis.properties as NumericAxisProperties).autoRanging) {
+                (yAxis.properties as NumericAxisProperties).max = floor(yMaxValue + 1).toInt()
+                (yAxis.properties as NumericAxisProperties).min = floor(yMinValue - 1).toInt()
+
+                while (((yAxis.properties as NumericAxisProperties).max - (yAxis.properties as NumericAxisProperties).min) % yAxis.properties.labelCount != 0) {
+                    (yAxis.properties as NumericAxisProperties).max++;
+                }
+                (yAxis.properties as NumericAxisProperties).step =
+                    (((yAxis.properties as NumericAxisProperties).max - (yAxis.properties as NumericAxisProperties).min) / yAxis.properties.labelCount).toInt()
             }
-            while(((yAxis.properties as NumericAxisProperties).max-(yAxis.properties as NumericAxisProperties).min)%yAxis.properties.labelCount!=0){
-                (yAxis.properties as NumericAxisProperties).max++;
+            if(xAxis.properties is NumericAxisProperties && (xAxis.properties as NumericAxisProperties).autoRanging) {
+                (xAxis.properties as NumericAxisProperties).max = floor(xMaxValue + 1).toInt()
+                (xAxis.properties as NumericAxisProperties).min = floor(xMinValue - 1).toInt()
+
+                while (((xAxis.properties as NumericAxisProperties).max - (xAxis.properties as NumericAxisProperties).min) % xAxis.properties.labelCount != 0) {
+                    (xAxis.properties as NumericAxisProperties).max++;
+                }
+
+                (xAxis.properties as NumericAxisProperties).step =
+                    (((xAxis.properties as NumericAxisProperties).max - (xAxis.properties as NumericAxisProperties).min) / xAxis.properties.labelCount).toInt()
             }
-            (xAxis.properties as NumericAxisProperties).step= (((xAxis.properties as NumericAxisProperties).max-(xAxis.properties as NumericAxisProperties).min)/xAxis.properties.labelCount).toInt()
-            (yAxis.properties as NumericAxisProperties).step= (((yAxis.properties as NumericAxisProperties).max-(yAxis.properties as NumericAxisProperties).min)/yAxis.properties.labelCount).toInt()
 
 
         } else {

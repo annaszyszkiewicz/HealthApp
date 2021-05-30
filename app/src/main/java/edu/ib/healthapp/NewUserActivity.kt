@@ -29,7 +29,7 @@ class NewUserActivity : AppCompatActivity() {
         if (intent.hasExtra("height")) binding.editTxtHeight.setText(intent.getStringExtra("height"))
 
 
-        binding.btnCreateUser.setOnClickListener({
+        binding.btnCreateUser.setOnClickListener {
             val name = binding.editTxtName.text.toString()
             val surname = binding.editTxtSurname.text.toString()
             val birth = binding.editTxtDateOfBirth.text.toString()
@@ -37,10 +37,10 @@ class NewUserActivity : AppCompatActivity() {
 
             val value = ContentValues()
 
-            value.put(TableInfo.TABLE_COLUMN_NAME, name)
-            value.put(TableInfo.TABLE_COLUMN_SURNAME, surname)
-            value.put(TableInfo.TABLE_COLUMN_BIRTH, birth)
-            value.put(TableInfo.TABLE_COLUMN_HEIGHT, height)
+            value.put(TableInfo.TABLE_USER_COLUMN_NAME, name)
+            value.put(TableInfo.TABLE_USER_COLUMN_SURNAME, surname)
+            value.put(TableInfo.TABLE_USER_COLUMN_BIRTH, birth)
+            value.put(TableInfo.TABLE_USER_COLUMN_HEIGHT, height)
 
             if (intent.hasExtra("ID")) {
                 if (!name.isEmpty() && !surname.isEmpty() && !birth.isEmpty() && !height.isEmpty()) {
@@ -63,7 +63,7 @@ class NewUserActivity : AppCompatActivity() {
                     ).show()
                 }
             } else {
-                if (!name.isEmpty() && !surname.isEmpty() && !birth.isEmpty() && !height.isEmpty()) {
+                if (name.isNotEmpty() && surname.isNotEmpty() && birth.isNotEmpty() && height.isNotEmpty()) {
                     db.insertOrThrow(TableInfo.TABLE_USER, null, value)
                     createUserToast.show()
                 } else {
@@ -74,6 +74,6 @@ class NewUserActivity : AppCompatActivity() {
                     ).show()
                 }
             }
-        })
+        }
     }
 }

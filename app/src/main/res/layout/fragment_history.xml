@@ -5,11 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".History">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHistory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/history_fragment"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent" />
 </FrameLayout>

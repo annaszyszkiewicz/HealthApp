@@ -1,10 +1,12 @@
-package edu.ib.healthapp
+package edu.ib.healthapp.activity
 
 import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.BaseColumns
 import android.widget.Toast
+import edu.ib.healthapp.DataBaseHelper
+import edu.ib.healthapp.TableInfo
 import edu.ib.healthapp.databinding.ActivityNewUserBinding
 
 class NewUserActivity : AppCompatActivity() {

@@ -1,6 +1,8 @@
 package edu.ib.healthapp.plots
 
 import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Color
 
 import android.util.AttributeSet
 import android.view.ViewGroup
@@ -11,7 +13,7 @@ import edu.ib.healthapp.plots.axis.PlotLegend
 import edu.ib.healthapp.plots.axis.properties.NumericAxisProperties
 import kotlin.math.floor
 
-class Plot<X,Y>: ViewGroup {
+open class Plot<X,Y>: ViewGroup {
 
     private var seriesList: ArrayList<PlotSeries<X,Y>> = ArrayList();
     internal var plotCanvas: PlotCanvas<X,Y> = PlotCanvas(this,context)

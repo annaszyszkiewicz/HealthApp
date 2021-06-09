@@ -1,4 +1,4 @@
-package edu.ib.healthapp
+package edu.ib.healthapp.activity
 
 import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
+import edu.ib.healthapp.DataBaseHelper
+import edu.ib.healthapp.TableInfo
 import edu.ib.healthapp.databinding.ActivityResultsBinding
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -92,8 +95,7 @@ class ResultsActivity : AppCompatActivity() {
 
         if(textField.text.toString().isNotEmpty() && dateField.text.toString().isNotEmpty() && timeField.text.toString().isNotEmpty()) {
             value.put(TableInfo.TABLE_RESULT_COLUMN_VALUE, textField.text.toString())
-            value.put(TableInfo.TABLE_RESULT_COLUMN_DATE, dateField.text.toString())
-            value.put(TableInfo.TABLE_RESULT_COLUMN_TIME, timeField.text.toString())
+            value.put(TableInfo.TABLE_RESULT_COLUMN_DATETIME, LocalDateTime.of(LocalDate.parse(dateField.text.toString()),LocalTime.parse(timeField.text.toString())).toString())
             value.put(TableInfo.TABLE_RESULT_COLUMN_TYPE,binding.selectResultType.selectedItem.toString())
             value.put(TableInfo.TABLE_RESULT_COLUMN_USER,userId)
             val dataBaseHelper = DataBaseHelper(applicationContext)

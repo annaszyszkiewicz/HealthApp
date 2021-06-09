@@ -1,16 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Stats">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/stats_fragment"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-</FrameLayout>
+        android:layout_height="match_parent">
 
+        <Spinner
+            android:id="@+id/spSeriesDatatype3"
+            android:layout_width="167dp"
+            android:layout_height="32dp"
+            android:entries="@array/spinnerType"
+            app:layout_constraintBottom_toBottomOf="@+id/spSeriesType3"
+            app:layout_constraintEnd_toStartOf="@+id/spSeriesType3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spSeriesType3" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seria 3"
+            app:layout_constraintBottom_toTopOf="@+id/spSeriesType3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spSeriesType2" />
+
+        <Spinner
+            android:id="@+id/spSeriesMultiData3"
+            android:layout_width="82dp"
+            android:layout_height="27dp"
+            android:entries="@array/plotMultiValue"
+            app:layout_constraintBottom_toBottomOf="@+id/spSeriesType3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/spSeriesType3"
+            app:layout_constraintTop_toTopOf="@+id/spSeriesType3" />
+
+        <Spinner
+            android:id="@+id/spSeriesType3"
+            android:layout_width="128dp"
+            android:layout_height="27dp"
+            android:entries="@array/plotSeriesSpinnerType"
+            app:layout_constraintBottom_toTopOf="@+id/btnStats"
+            app:layout_constraintEnd_toStartOf="@+id/spSeriesMultiData3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/spSeriesDatatype3"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <Spinner
+            android:id="@+id/spSeriesDatatype2"
+            android:layout_width="167dp"
+            android:layout_height="32dp"
+            android:entries="@array/spinnerType"
+            app:layout_constraintBottom_toBottomOf="@+id/spSeriesType2"
+            app:layout_constraintEnd_toStartOf="@+id/spSeriesType2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spSeriesType2" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seria 2"
+            app:layout_constraintBottom_toTopOf="@+id/spSeriesType2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spSeriesType1" />
+
+        <Spinner
+            android:id="@+id/spSeriesMultiData2"
+            android:layout_width="82dp"
+            android:layout_height="27dp"
+            android:entries="@array/plotMultiValue"
+            app:layout_constraintBottom_toBottomOf="@+id/spSeriesType2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/spSeriesType2"
+            app:layout_constraintTop_toTopOf="@+id/spSeriesType2" />
+
+        <Spinner
+            android:id="@+id/spSeriesType2"
+            android:layout_width="128dp"
+            android:layout_height="27dp"
+            android:entries="@array/plotSeriesSpinnerType"
+            app:layout_constraintBottom_toTopOf="@+id/textView8"
+            app:layout_constraintEnd_toStartOf="@+id/spSeriesMultiData2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/spSeriesDatatype2"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <Button
+            android:id="@+id/btnStats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wygeneruj"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spSeriesType3" />
+
+        <Spinner
+            android:id="@+id/spTime"
+            android:layout_width="260dp"
+            android:layout_height="28dp"
+            android:entries="@array/spinnerTime"
+            app:layout_constraintBottom_toTopOf="@+id/editTextDate1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextDate1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/editTextDate2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txtStartDate"
+            app:layout_constraintTop_toBottomOf="@+id/spTime" />
+
+        <TextView
+            android:id="@+id/txtStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data początkowa"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextDate1"
+            app:layout_constraintEnd_toStartOf="@+id/editTextDate1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextDate1" />
+
+        <TextView
+            android:id="@+id/txtEndDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data końcowa"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextDate2"
+            app:layout_constraintEnd_toStartOf="@+id/editTextDate2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextDate2" />
+
+        <EditText
+            android:id="@+id/editTextDate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txtEndDate"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDate1" />
+
+        <Spinner
+            android:id="@+id/spSeriesDatatype1"
+            android:layout_width="167dp"
+            android:layout_height="32dp"
+            android:entries="@array/spinnerType"
+            app:layout_constraintBottom_toBottomOf="@+id/spSeriesType1"
+            app:layout_constraintEnd_toStartOf="@+id/spSeriesType1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spSeriesType1" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seria 1"
+            app:layout_constraintBottom_toTopOf="@+id/spSeriesType1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDate2" />
+
+        <Spinner
+            android:id="@+id/spSeriesType1"
+            android:layout_width="135dp"
+            android:layout_height="33dp"
+            android:entries="@array/plotSeriesSpinnerType"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintEnd_toStartOf="@+id/spSeriesMultiData1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/spSeriesDatatype1"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <Spinner
+            android:id="@+id/spSeriesMultiData1"
+            android:layout_width="82dp"
+            android:layout_height="27dp"
+            android:entries="@array/plotMultiValue"
+            app:layout_constraintBottom_toBottomOf="@+id/spSeriesType1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/spSeriesType1"
+            app:layout_constraintTop_toTopOf="@+id/spSeriesType1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

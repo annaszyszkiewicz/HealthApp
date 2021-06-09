@@ -1,11 +1,12 @@
-package edu.ib.healthapp
+package edu.ib.healthapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import edu.ib.healthapp.R
 
-class ResultInterpretationActivity : AppCompatActivity() {
+class RemindersSetterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_result_interpretation)
+        setContentView(R.layout.activity_reminders_setter)
     }
 }

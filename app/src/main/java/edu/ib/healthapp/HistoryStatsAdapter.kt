@@ -11,19 +11,19 @@ internal class HistoryStatsAdapter(
     var context: Context,
     fm: FragmentManager,
     var totalTabs: Int,
-    val userId: Int,
+    val uId: Int,
     val db: SQLiteDatabase
 ) :
     FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> {
-                History(userId,db)
+                History(uId,db)
             }
             1 -> {
-                Stats(userId,db)
+                Stats(uId,db)
             }
-            else -> getItem(position)
+            else -> throw Exception("Exception")
         }
     }
     override fun getCount(): Int {

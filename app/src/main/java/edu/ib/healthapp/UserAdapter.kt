@@ -3,13 +3,14 @@ package edu.ib.healthapp
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
-import android.provider.BaseColumns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import edu.ib.healthapp.activity.NewUserActivity
+import edu.ib.healthapp.activity.UserActivity
 
 class UserAdapter(val context: Context, val db: SQLiteDatabase) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {

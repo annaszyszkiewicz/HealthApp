@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import edu.ib.healthapp.activity.NewUserActivity
+import edu.ib.healthapp.activity.SettingsActivity
 import edu.ib.healthapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

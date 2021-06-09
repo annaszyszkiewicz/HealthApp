@@ -42,10 +42,29 @@ class PlotSeries<X,Y>(val xClass: Class<X>, val yClass: Class<Y>,var title: Stri
 
 }
 
-enum class GraphType {
-    Linear,
-    XYChart,
-    CategoryGraph
+enum class GraphType(val label:String) {
+    Linear("Liniowy"),
+    XYChart("Punktowy"),
+    CategoryGraph("Słupkowy");
+
+    companion object{
+        fun getGraphType(string:String): GraphType?{
+            return when (string){
+                Linear.label->{
+                    Linear
+                }
+                XYChart.label->{
+                    XYChart
+                }
+                CategoryGraph.label->{
+                    CategoryGraph
+                }
+                else -> {
+                    null
+                }
+            }
+        }
+    }
 }
 
 

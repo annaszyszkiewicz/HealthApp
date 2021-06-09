@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultsActivity">
+    tools:context=".activity.ResultsActivity">
 
     <TextView
         android:id="@+id/txtUnit"
@@ -24,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:ems="10"
-        android:inputType="time"
         app:layout_constraintBottom_toTopOf="@+id/btnSaveResult"
         app:layout_constraintEnd_toEndOf="@+id/btnSaveResult"
         app:layout_constraintStart_toStartOf="@+id/btnSaveResult"

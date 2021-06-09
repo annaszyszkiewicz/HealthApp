@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.time.LocalDateTime
 
 class ResultAdapter(val userID: Int, val db: SQLiteDatabase) :
     RecyclerView.Adapter<ResultAdapter.ResultViewHolder>() {
@@ -45,8 +46,7 @@ class ResultAdapter(val userID: Int, val db: SQLiteDatabase) :
                 TableInfo.TABLE_RESULT,
             arrayOf(
                 TableInfo.TABLE_RESULT_ID,
-                TableInfo.TABLE_RESULT_COLUMN_DATE,
-                TableInfo.TABLE_RESULT_COLUMN_TIME,
+                TableInfo.TABLE_RESULT_COLUMN_DATETIME,
                 TableInfo.TABLE_RESULT_COLUMN_TYPE,
                 TableInfo.TABLE_RESULT_COLUMN_VALUE
             ),
@@ -56,10 +56,10 @@ class ResultAdapter(val userID: Int, val db: SQLiteDatabase) :
 
         if (cursor.moveToPosition(position)) {
             id.text=cursor.getString(0)
-            date.text=cursor.getString(1)
-            time.text=cursor.getString(2)
-            type.text=cursor.getString(3)
-            value.text=cursor.getString(4)
+            date.text=LocalDateTime.parse(cursor.getString(1)).toLocalDate().toString()
+            time.text=LocalDateTime.parse(cursor.getString(1)).toLocalTime().toString()
+            type.text=cursor.getString(2)
+            value.text=cursor.getString(3)
         }
 
         button.setOnClickListener {

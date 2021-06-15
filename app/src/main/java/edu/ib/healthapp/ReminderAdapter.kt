@@ -74,31 +74,9 @@ class ReminderAdapter(val userID: Int, val db: SQLiteDatabase) :
                 arrayOf(reminderId.toString())
             )
             notifyDataSetChanged()
-        };
-
-
-
-
-//        val name_edit = cursor.getString(1)
-//        val suranem_edit = cursor.getString(2)
-//        val birth_edit = cursor.getString(3)
-//        val height_edit = cursor.getString(4)
-//        val id_edit = cursor.getString(0)
-//
-//        item.setOnLongClickListener {
-//            val intent = Intent(context, AddReminderActivity::class.java)
-//            intent.putExtra("name", name_edit)
-//            intent.putExtra("surname", suranem_edit)
-//            intent.putExtra("birth", birth_edit)
-//            intent.putExtra("height", height_edit)
-//            intent.putExtra("ID", id_edit)
-//
-//            context.startActivity(intent)
-//            true
-//        }
+        }
 
     }
-
 
     class ReminderViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 

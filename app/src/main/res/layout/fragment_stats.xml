@@ -4,20 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20px"
     tools:context=".Stats">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="20px">
 
         <Spinner
             android:id="@+id/spSeriesDatatype3"
-            android:layout_width="160dp"
+            android:layout_width="120dp"
             android:layout_height="30dp"
             android:entries="@array/spinnerType"
             app:layout_constraintBottom_toBottomOf="@+id/spSeriesType3"
             app:layout_constraintEnd_toStartOf="@+id/spSeriesType3"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/spSeriesType3" />
 
@@ -33,7 +36,7 @@
 
         <Spinner
             android:id="@+id/spSeriesMultiData3"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:entries="@array/plotMultiValue"
             app:layout_constraintBottom_toBottomOf="@+id/spSeriesType3"
@@ -44,7 +47,7 @@
 
         <Spinner
             android:id="@+id/spSeriesType3"
-            android:layout_width="130dp"
+            android:layout_width="120dp"
             android:layout_height="30dp"
             android:entries="@array/plotSeriesSpinnerType"
             app:layout_constraintBottom_toTopOf="@+id/btnStats"
@@ -55,12 +58,13 @@
 
         <Spinner
             android:id="@+id/spSeriesDatatype2"
-            android:layout_width="160dp"
+            android:layout_width="120dp"
             android:layout_height="30dp"
             android:entries="@array/spinnerType"
             app:layout_constraintBottom_toBottomOf="@+id/spSeriesType2"
             app:layout_constraintEnd_toStartOf="@+id/spSeriesType2"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/spSeriesType2" />
 
@@ -76,7 +80,7 @@
 
         <Spinner
             android:id="@+id/spSeriesMultiData2"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:entries="@array/plotMultiValue"
             app:layout_constraintBottom_toBottomOf="@+id/spSeriesType2"
@@ -87,7 +91,7 @@
 
         <Spinner
             android:id="@+id/spSeriesType2"
-            android:layout_width="130dp"
+            android:layout_width="120dp"
             android:layout_height="30dp"
             android:entries="@array/plotSeriesSpinnerType"
             app:layout_constraintBottom_toTopOf="@+id/textView8"
@@ -101,6 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Wygeneruj"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -165,12 +170,13 @@
 
         <Spinner
             android:id="@+id/spSeriesDatatype1"
-            android:layout_width="160dp"
+            android:layout_width="120dp"
             android:layout_height="30dp"
             android:entries="@array/spinnerType"
             app:layout_constraintBottom_toBottomOf="@+id/spSeriesType1"
             app:layout_constraintEnd_toStartOf="@+id/spSeriesType1"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/spSeriesType1" />
 
@@ -187,7 +193,7 @@
 
         <Spinner
             android:id="@+id/spSeriesType1"
-            android:layout_width="130dp"
+            android:layout_width="120dp"
             android:layout_height="30dp"
             android:entries="@array/plotSeriesSpinnerType"
             app:layout_constraintBottom_toTopOf="@+id/textView7"
@@ -198,7 +204,7 @@
 
         <Spinner
             android:id="@+id/spSeriesMultiData1"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:entries="@array/plotMultiValue"
             app:layout_constraintBottom_toBottomOf="@+id/spSeriesType1"

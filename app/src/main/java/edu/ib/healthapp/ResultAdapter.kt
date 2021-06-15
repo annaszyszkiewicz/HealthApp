@@ -68,12 +68,10 @@ class ResultAdapter(val userID: Int, val db: SQLiteDatabase) :
         val d=cursor.getString(0);
         button.setOnClickListener {
             db.delete(TableInfo.TABLE_RESULT,TableInfo.TABLE_RESULT_ID+"=?",arrayOf(d))
-            notifyItemRemoved(position)
+            notifyDataSetChanged()
         };
         cursor.close()
-
     }
-
 
     class ResultViewHolder(val view:View) : RecyclerView.ViewHolder(view)
 

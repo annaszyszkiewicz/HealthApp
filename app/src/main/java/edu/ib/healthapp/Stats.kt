@@ -57,21 +57,25 @@ class Stats(val uId: Int,val db: SQLiteDatabase) : Fragment() {
                             text1.text="Data początkowa"
                             text2.text="Data końcowa"
                         }
-                        Type.InsertMonth.data,Type.InsertWeek.data->{
+                        Type.InsertMonth.data->{
                             editText1.text.clear()
                             editText2.text.clear()
                             editText1.isEnabled = true
                             editText2.isEnabled = true
                             editText1.inputType = InputType.TYPE_NUMBER_FLAG_SIGNED
                             editText2.inputType = InputType.TYPE_NUMBER_FLAG_SIGNED
-                        }
-                        Type.InsertMonth.data->{
-                            text1.text="Wprowadź miesiąc"
-                            text2.text="Wprowadź rok"
+                            text1.text="Wprowadź rok"
+                            text2.text="Wprowadź miesiąc"
                         }
                         Type.InsertWeek.data->{
-                            text1.text="Wprowadź tydzień"
-                            text2.text="Wprowadź rok"
+                            editText1.text.clear()
+                            editText2.text.clear()
+                            editText1.isEnabled = true
+                            editText2.isEnabled = true
+                            editText1.inputType = InputType.TYPE_NUMBER_FLAG_SIGNED
+                            editText2.inputType = InputType.TYPE_NUMBER_FLAG_SIGNED
+                            text1.text="Wprowadź rok"
+                            text2.text="Wprowadź tydzień"
                         }
                     }
                 }
@@ -191,9 +195,9 @@ class Stats(val uId: Int,val db: SQLiteDatabase) : Fragment() {
                 }
                 Type.InsertWeek.data->{
                     data = DataOptions(Type.InsertWeek)
-                    val startDateOfYear=LocalDate.of(text1.text.toString().toInt(),1,1)
-                    val startDate=startDateOfYear.minusDays(startDateOfYear.dayOfWeek.value.toLong()).plusWeeks(text2.text.toString().toLong())
-                    val endDate=startDate.plusMonths(1L).minusDays(1L)
+                    val startDateOfYear=LocalDate.of(editText1.text.toString().toInt(),1,1)
+                    val startDate=startDateOfYear.minusDays(startDateOfYear.dayOfWeek.value.toLong()).plusWeeks(editText2.text.toString().toLong())
+                    val endDate=startDate.plusWeeks(1L).minusDays(1L)
                     data.startDate=startDate
                     data.endDate=endDate
                     data.series1= GraphType.getGraphType(spType1.selectedItem.toString());

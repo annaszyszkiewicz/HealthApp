@@ -1,5 +1,6 @@
 package edu.ib.healthapp.plots
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -8,56 +9,124 @@ import android.graphics.Rect
 import android.util.Log
 import android.view.View
 import edu.ib.healthapp.plots.axis.properties.NumericAxisProperties
+import edu.ib.healthapp.plots.axis.properties.StringAxisProperties
 
-class PlotCanvas<X,Y>(var plot: Plot<X,Y>,context: Context?) : View(context) {
+@SuppressLint("ViewConstructor")
+class PlotCanvas<X, Y>(var plot: Plot<X, Y>, context: Context?) : View(context) {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas.drawColor(Color.BLUE)
+        canvas.drawColor(Color.LTGRAY)
 
-        val plotSeries=plot.getSeriesList();
+        val plotSeries = plot.getSeriesList();
+        if (plot.getXClass() != String::class.java) {
+            for (i in 0 until plotSeries.size) {
+                val series = plotSeries[i];
+                for (j in 0 until series.dataList.size) {
+                    if(series.getData(j).y==null) continue;
 
-        for(i in 0 until plotSeries.size){
-            val series=plotSeries[i];
-            for(j in 0 until series.dataList.size){
+                    val xAxisMax =
+                        (plot.getXAxis().getAxisProperties() as NumericAxisProperties).max
+                    val xAxisMin =
+                        (plot.getXAxis().getAxisProperties() as NumericAxisProperties).min
+                    val yAxisMax =
+                        (plot.getYAxis().getAxisProperties() as NumericAxisProperties).max
+                    val yAxisMin =
+                        (plot.getYAxis().getAxisProperties() as NumericAxisProperties).min
 
-                if(plot.getXClass()!=String::class.java) {
-                    val xAxisMax =(plot.getXAxis().getAxisProperties() as NumericAxisProperties).max;
-                    val xAxisMin =(plot.getXAxis().getAxisProperties() as NumericAxisProperties).min;
-                    val yAxisMax =(plot.getYAxis().getAxisProperties() as NumericAxisProperties).max;
-                    val yAxisMin =(plot.getYAxis().getAxisProperties() as NumericAxisProperties).min;
-                    Log.d("health","xAxisMax"+xAxisMax)
-                    Log.d("health","xAxisMin"+xAxisMin)
-                    Log.d("health","yAxisMax"+yAxisMax)
-                    Log.d("health","yAxisMin"+yAxisMin)
-
-
-                    val xRange=xAxisMax-xAxisMin;
-                    val yRange=yAxisMax-yAxisMin;
-                    val xCoordinate=(series.getData(j).x as Double-xAxisMin)/xRange * width;
-                    val yCoordinate=height-(series.getData(j).y as Double-yAxisMin)/yRange * height;
-                    when(series.type){
-                        GraphType.XYChart ->{
-                            canvas.drawCircle(xCoordinate.toFloat(),yCoordinate.toFloat(),width*0.005f,series.paint);
+                    val xRange = xAxisMax - xAxisMin;
+                    val yRange = yAxisMax - yAxisMin;
+                    val xCoordinate = (series.getData(j).x as Double - xAxisMin) / xRange * width;
+                    val yCoordinate =
+                        height - (series.getData(j).y as Double - yAxisMin) / yRange * height;
+                    when (series.type) {
+                        GraphType.XYChart -> {
+                            canvas.drawCircle(
+                                xCoordinate.toFloat(),
+                                yCoordinate.toFloat(),
+                                width * 0.005f,
+                                series.paint
+                            );
                         }
-                        GraphType.Linear ->{
-                            if(j!=0){
-                                val lastXCoordinate=(series.getData(j-1).x as Double-xAxisMin)/xRange * width;
-                                val lastYCoordinate=height-(series.getData(j-1).y as Double - yAxisMin)/yRange * height;
-                                canvas.drawLine(lastXCoordinate.toFloat(),lastYCoordinate.toFloat(),xCoordinate.toFloat(),yCoordinate.toFloat(),series.paint);
+                        GraphType.Linear -> {
+                            if (j != 0) {
+                                val lastXCoordinate =
+                                    (series.getData(j - 1).x as Double - xAxisMin) / xRange * width;
+                                val lastYCoordinate =
+                                    height - (series.getData(j - 1).y as Double - yAxisMin) / yRange * height;
+                                canvas.drawLine(
+                                    lastXCoordinate.toFloat(),
+                                    lastYCoordinate.toFloat(),
+                                    xCoordinate.toFloat(),
+                                    yCoordinate.toFloat(),
+                                    series.paint
+                                );
                             }
                         }
-                        GraphType.CategoryGraph ->{
-                            canvas.drawRect(xCoordinate.toFloat()-0.005f*width,yCoordinate.toFloat(),xCoordinate.toFloat()+0.005f*width,height.toFloat(),series.paint);
+                        GraphType.CategoryGraph -> {
+                            canvas.drawRect(
+                                xCoordinate.toFloat() - 0.005f * width,
+                                yCoordinate.toFloat(),
+                                xCoordinate.toFloat() + 0.005f * width,
+                                height.toFloat(),
+                                series.paint
+                            );
+                        }
+
+                    }
+                }
+            }
+        } else {
+            val seriesList = plot.getSeriesList()
+            val dataCount = seriesList.size
+            val propertiesY = plot.getYAxis().properties as NumericAxisProperties
+            val max = propertiesY.max
+            val min = propertiesY.min
+            val range = max - min
+            for (i in 0 until dataCount) {
+                for (j in 0 until seriesList[i].dataList.size) {
+                    if(seriesList[i].getData(j).y==null) continue;
+                    val xCoordinate = width / (dataCount + 1) * (i + 1)
+                    val yCoordinate =
+                        height * ((seriesList[i].dataList[j].y as Double - min) / range)
+                    when (seriesList[i].type) {
+                        GraphType.XYChart -> {
+                            canvas.drawCircle(
+                                xCoordinate.toFloat(),
+                                yCoordinate.toFloat(),
+                                width * 0.005f,
+                                seriesList[i].paint
+                            );
+                        }
+                        GraphType.Linear -> {
+                            if (i != 0) {
+                                val lastXCoordinate = width / (dataCount + 1) * (j);
+                                val lastYCoordinate =
+                                    height * ((seriesList[i].dataList[j - 1].y as Double - min) / range)
+                                canvas.drawLine(
+                                    lastXCoordinate.toFloat(),
+                                    lastYCoordinate.toFloat(),
+                                    xCoordinate.toFloat(),
+                                    yCoordinate.toFloat(),
+                                    seriesList[i].paint
+                                );
+                            }
+                        }
+                        GraphType.CategoryGraph -> {
+                            canvas.drawRect(
+                                xCoordinate.toFloat() - 0.005f * width,
+                                yCoordinate.toFloat(),
+                                xCoordinate.toFloat() + 0.005f * width,
+                                height.toFloat(),
+                                seriesList[i].paint
+                            );
                         }
                     }
-
-                } else {
-                    //tutaj dla String
                 }
-
             }
         }
 
     }
 }
+
+

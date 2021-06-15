@@ -24,6 +24,7 @@ class ResultAdapter(val userID: Int, val db: SQLiteDatabase) :
             TableInfo.TABLE_RESULT_COLUMN_USER+"="+userID, null,
             null, null, null
         )
+
         val rows = cursor.count
 
         cursor.close()
@@ -48,10 +49,11 @@ class ResultAdapter(val userID: Int, val db: SQLiteDatabase) :
                 TableInfo.TABLE_RESULT_ID,
                 TableInfo.TABLE_RESULT_COLUMN_DATETIME,
                 TableInfo.TABLE_RESULT_COLUMN_TYPE,
-                TableInfo.TABLE_RESULT_COLUMN_VALUE
+                TableInfo.TABLE_RESULT_COLUMN_VALUE1,
+                TableInfo.TABLE_RESULT_COLUMN_VALUE2
             ),
             TableInfo.TABLE_RESULT_COLUMN_USER + "=?", arrayOf(userID.toString()),
-            null, null, null
+            null, null, TableInfo.TABLE_RESULT_COLUMN_DATETIME + " DESC, " + TableInfo.TABLE_RESULT_ID + " DESC"
         )
 
         if (cursor.moveToPosition(position)) {
@@ -59,13 +61,19 @@ class ResultAdapter(val userID: Int, val db: SQLiteDatabase) :
             date.text=LocalDateTime.parse(cursor.getString(1)).toLocalDate().toString()
             time.text=LocalDateTime.parse(cursor.getString(1)).toLocalTime().toString()
             type.text=cursor.getString(2)
-            value.text=cursor.getString(3)
+            if(type.text=="ciśnienie krwi"){
+                val t=cursor.getString(3)+"/"+cursor.getString(4)
+                value.text=t;
+            } else {
+                value.text = cursor.getString(3)
+            }
         }
-
+        val d=cursor.getString(0);
         button.setOnClickListener {
-            db.delete(TableInfo.TABLE_RESULT,TableInfo.TABLE_RESULT_ID+"=?",arrayOf(cursor.getString(0)))
+            db.delete(TableInfo.TABLE_RESULT,TableInfo.TABLE_RESULT_ID+"=?",arrayOf(d))
             notifyItemRemoved(position)
         };
+        cursor.close()
 
     }
 

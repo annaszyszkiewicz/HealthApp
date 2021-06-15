@@ -1,5 +1,6 @@
 package edu.ib.healthapp.plots
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -11,9 +12,13 @@ import edu.ib.healthapp.plots.axis.Axis
 import edu.ib.healthapp.plots.axis.AxisType
 import edu.ib.healthapp.plots.axis.PlotLegend
 import edu.ib.healthapp.plots.axis.properties.NumericAxisProperties
+import edu.ib.healthapp.plots.axis.properties.StringAxisProperties
 import kotlin.math.floor
+import kotlin.math.max
+import kotlin.math.min
 
-open class Plot<X,Y>: ViewGroup {
+@SuppressLint("ViewConstructor")
+class Plot<X,Y>: ViewGroup {
 
     private var seriesList: ArrayList<PlotSeries<X,Y>> = ArrayList();
     internal var plotCanvas: PlotCanvas<X,Y> = PlotCanvas(this,context)
@@ -218,10 +223,10 @@ open class Plot<X,Y>: ViewGroup {
                 yMinValue = 0.0
 
             } else {
-                xMaxValue = Double.MIN_VALUE
-                xMinValue = Double.MAX_VALUE
-                yMaxValue = Double.MIN_VALUE
-                yMinValue = Double.MAX_VALUE
+                xMaxValue = Double.NEGATIVE_INFINITY
+                xMinValue = Double.POSITIVE_INFINITY
+                yMaxValue = Double.NEGATIVE_INFINITY
+                yMinValue = Double.POSITIVE_INFINITY
                 for (i in 0 until seriesList.size) {
                     val series = seriesList[i]
                     for (j in 0 until series.dataList.size) {
@@ -258,9 +263,59 @@ open class Plot<X,Y>: ViewGroup {
 
 
         } else {
+            var maxValue=Double.NEGATIVE_INFINITY
+            var minValue=Double.POSITIVE_INFINITY
+            val fields=min(7,seriesList[0].dataList.size)
+            for(i in 0 until seriesList.size){
+                for(j in 0 until seriesList[i].dataList.size){
+                    if(seriesList[i].dataList[j].y is Double){
+                        maxValue = max(maxValue, seriesList[i].dataList[j].y as Double)
+                        minValue = min(minValue, seriesList[i].dataList[j].y as Double)
+                    } else {
+                        maxValue = max(maxValue, (seriesList[i].dataList[j].y as Int).toDouble())
+                        minValue = min(minValue, (seriesList[i].dataList[j].y as Int).toDouble())
+                    }
+                    if(seriesList[i].dataList[j] != seriesList[0].dataList[j]){
+                        throw PlotException("Wrong data")
+                    }
+                }
+            }
 
+            var yMaxValue: Double;
+            var yMinValue: Double;
+            if(seriesList.size==0) {
+                yMaxValue = 10.0
+                yMinValue = 0.0
+            } else {
+                yMaxValue = Double.NEGATIVE_INFINITY
+                yMinValue = Double.POSITIVE_INFINITY
+                for (i in 0 until seriesList.size) {
+                    val series = seriesList[i]
+                    for (j in 0 until series.dataList.size) {
+                        val data = series.getData(j)
+
+                        yMaxValue= yMaxValue.coerceAtLeast(data.y as Double)
+                        yMinValue= yMinValue.coerceAtMost(data.y as Double)
+                    }
+                }
+
+            }
+            if(yAxis.properties is NumericAxisProperties && (yAxis.properties as NumericAxisProperties).autoRanging) {
+                (yAxis.properties as NumericAxisProperties).max = floor(yMaxValue + 1).toInt()
+                (yAxis.properties as NumericAxisProperties).min = floor(yMinValue - 1).toInt()
+
+                while (((yAxis.properties as NumericAxisProperties).max - (yAxis.properties as NumericAxisProperties).min) % yAxis.properties.labelCount != 0) {
+                    (yAxis.properties as NumericAxisProperties).max++;
+                }
+                (yAxis.properties as NumericAxisProperties).step =
+                    (((yAxis.properties as NumericAxisProperties).max - (yAxis.properties as NumericAxisProperties).min) / yAxis.properties.labelCount).toInt()
+            }
+
+            val properties = xAxis.properties as StringAxisProperties
+
+            properties.textFields=fields
         }
-        invalidate()
+        postInvalidate()
     }
 
 

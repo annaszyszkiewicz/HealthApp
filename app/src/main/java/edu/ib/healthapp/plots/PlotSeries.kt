@@ -4,7 +4,7 @@ import android.graphics.Color
 import android.graphics.Paint
 
 
-class PlotSeries<X,Y>(val xClass: Class<X>, val yClass: Class<Y>,var title: String, var type: GraphType) {
+class PlotSeries<X,Y>(val xClass: Class<X>, val yClass: Class<Y>?,var title: String, var type: GraphType) {
     var color: Int = Color.GREEN;
     val paint: Paint = Paint();
     var dataList: ArrayList<PlotData<X,Y>> = ArrayList();
@@ -17,11 +17,11 @@ class PlotSeries<X,Y>(val xClass: Class<X>, val yClass: Class<Y>,var title: Stri
     }
 
 
-    fun add(x: X, y:Y){
+    fun add(x: X, y:Y?){
         dataList.add(PlotData(x,y));
     }
 
-    fun add(index: Int, x: X, y:Y){
+    fun add(index: Int, x: X, y:Y?){
         dataList.add(index, PlotData(x,y))
     }
 

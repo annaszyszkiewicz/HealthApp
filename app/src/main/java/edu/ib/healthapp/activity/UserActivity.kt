@@ -35,6 +35,11 @@ class UserActivity : AppCompatActivity() {
         intent.putExtra("user_id",userId)
         startActivity(intent)
     }
+    fun onClickRaport(view: View) {
+        val intent = Intent(applicationContext,RaportActivity::class.java)
+        intent.putExtra("user_id",userId)
+        startActivity(intent)
+    }
 
 
 }

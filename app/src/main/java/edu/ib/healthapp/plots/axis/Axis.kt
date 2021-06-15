@@ -13,6 +13,7 @@ import androidx.core.view.children
 import edu.ib.healthapp.plots.Plot
 import edu.ib.healthapp.plots.axis.properties.AxisProperties
 import edu.ib.healthapp.plots.axis.properties.NumericAxisProperties
+import edu.ib.healthapp.plots.axis.properties.StringAxisProperties
 import kotlin.collections.ArrayList
 
 @SuppressLint("ViewConstructor")
@@ -39,7 +40,7 @@ class Axis<X, Y> : ViewGroup {
         this.axisType = axisType;
 
         if (xClass == String::class.java && axisType == AxisType.X || yClass == String::class.java && axisType == AxisType.Y) {
-            properties = AxisProperties()
+            properties = StringAxisProperties()
         } else {
             properties = NumericAxisProperties()
         }
@@ -57,7 +58,7 @@ class Axis<X, Y> : ViewGroup {
         this.plot = plot
         this.axisType = axisType
         if (xClass == String::class.java && axisType == AxisType.X || yClass == String::class.java && axisType == AxisType.Y) {
-            properties = AxisProperties()
+            properties = StringAxisProperties()
         } else {
             properties = NumericAxisProperties()
         }
@@ -75,7 +76,7 @@ class Axis<X, Y> : ViewGroup {
         this.plot = plot
         this.axisType = axisType
         if (xClass == String::class.java && axisType == AxisType.X || yClass == String::class.java && axisType == AxisType.Y) {
-            properties = AxisProperties()
+            properties = StringAxisProperties()
         } else {
             properties = NumericAxisProperties()
         }
@@ -94,7 +95,7 @@ class Axis<X, Y> : ViewGroup {
         this.plot = plot
         this.axisType = axisType
         if (xClass == String::class.java && axisType == AxisType.X || yClass == String::class.java && axisType == AxisType.Y) {
-            properties = AxisProperties()
+            properties = StringAxisProperties()
         } else {
             properties = NumericAxisProperties()
         }
@@ -121,25 +122,21 @@ class Axis<X, Y> : ViewGroup {
 
         if (axisType == AxisType.X) {
             //canvas.drawColor(Color.CYAN)
-            if (xClass == String::class.java) {
 
-            } else {
-                val prop=properties as NumericAxisProperties
-                val xLeft=prop.leftAxisMargin*width
-                val y=prop.topAxisMargin*height
-                canvas.drawLine(xLeft,y,width.toFloat(),y,paint)
-                canvas.drawLine(width.toFloat(),y,width*(1-0.05f),0f,paint)
-                canvas.drawLine(width.toFloat(),y,width*(1-0.05f),2*y,paint)
-                for(item in valuesToDrawLines){
-                    canvas.drawLine(item,0f,item,2f*properties.topAxisMargin*height,paint)
+                val prop = properties as AxisProperties
+                val xLeft = prop.leftAxisMargin * width
+                val y = prop.topAxisMargin * height
+                canvas.drawLine(xLeft, y, width.toFloat(), y, paint)
+                canvas.drawLine(width.toFloat(), y, width * (1 - 0.05f), 0f, paint)
+                canvas.drawLine(width.toFloat(), y, width * (1 - 0.05f), 2 * y, paint)
+                for (item in valuesToDrawLines) {
+                    canvas.drawLine(item, 0f, item, 2f * properties.topAxisMargin * height, paint)
                 }
-            }
+
 
         } else {
             //canvas.drawColor(Color.BLUE)
-            if (yClass == String::class.java) {
 
-            } else {
                 val prop=properties as NumericAxisProperties
                 val x=(1-prop.rightAxisMargin)*width
                 val yDown=(1-prop.bottomAxisMargin)*height
@@ -148,7 +145,7 @@ class Axis<X, Y> : ViewGroup {
                 canvas.drawLine(x,0f,width.toFloat(),0.05f*height,paint)
                 for(item in valuesToDrawLines){
                     canvas.drawLine(width.toFloat(),item,width-2*properties.rightAxisMargin*width,item,paint)
-                }
+
             }
         }
     }
@@ -167,7 +164,17 @@ class Axis<X, Y> : ViewGroup {
         }
         if (axisType == AxisType.X) {
             if (xClass == String::class.java) {
+                val prop=properties as StringAxisProperties
+                val l = plot.getSeriesList()[0].dataList.size
+                for(i in 0 until axisTextViewList.size){
+                    val textField=axisTextViewList[i]
+                    textField.text = plot.getSeriesList()[0].getData(l/(axisTextViewList.size)*i).x.toString();
+                    val pixelStep=((1-prop.leftAxisMargin))/axisTextViewList.size.toFloat()
 
+                    textField.x=(i+1)*pixelStep
+                    textField.y=0.45f*height
+                    valuesToDrawLines.add(textField.x)
+                }
             } else {
                 val prop: NumericAxisProperties = properties as NumericAxisProperties
                 val pixelStep=((1-prop.leftAxisMargin)*width)/((prop.max-prop.min)/prop.step)
@@ -178,14 +185,11 @@ class Axis<X, Y> : ViewGroup {
                     item.x=(pixelStep*i+prop.leftAxisMargin*width).toFloat()
                     valuesToDrawLines.add(item.x)
                     item.y=0.45f*height
-
                 }
             }
 
         } else {
-            if (yClass == String::class.java) {
 
-            } else {
                 for (item in axisTextViewList) {
                     val prop: NumericAxisProperties = properties as NumericAxisProperties
                     val pixelStep=((1-prop.bottomAxisMargin)*height)/((prop.max-prop.min)/prop.step)
@@ -198,7 +202,7 @@ class Axis<X, Y> : ViewGroup {
                         valuesToDrawLines.add(height-(pixelStep*i+prop.bottomAxisMargin*height).toFloat())
                     }
                 }
-            }
+
         }
         setMeasuredDimension(widthMeasureSpec,heightMeasureSpec)
     }

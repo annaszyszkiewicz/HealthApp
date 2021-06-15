@@ -90,7 +90,8 @@ enum class SeriesOption(val label:String){
 enum class DataType(val label:String){
     Off("Wyłączone"),
     Weight("Waga"),
-    Pressure("Ciśnienie krwi"),
+    PressureS("Ciśnienie krwi (sk)"),
+    PressureD("Ciśnienie krwi (roz)"),
     Glucose("Poziom glukozy"),
     Temperature("Temperatura"),
     Water("Wypita woda");
@@ -99,7 +100,8 @@ enum class DataType(val label:String){
             return when(label){
                 Off.label->Off
                 Weight.label->Weight
-                Pressure.label->Pressure
+                PressureS.label->PressureS
+                PressureD.label->PressureD
                 Glucose.label->Glucose
                 Temperature.label->Temperature
                 Water.label->Water

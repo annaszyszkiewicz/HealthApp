@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter
 class ResultsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultsBinding
-    private var userId=0
+    private var userId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +28,8 @@ class ResultsActivity : AppCompatActivity() {
         binding.editTxtResultTime.setText(
             LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).toString()
         )
-        val intent=intent;
-        if(intent.hasExtra("user_id")) userId=intent.getIntExtra("user_id",0)
+        val intent = intent;
+        if (intent.hasExtra("user_id")) userId = intent.getIntExtra("user_id", 0)
 
         binding.selectResultType.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -91,20 +91,68 @@ class ResultsActivity : AppCompatActivity() {
         val textField = binding.editTxtResult
         val dateField = binding.editTxtResultDate
         val timeField = binding.editTxtResultTime
-        val value=ContentValues();
+        val spinner = binding.selectResultType
+        val value = ContentValues();
 
-        if(textField.text.toString().isNotEmpty() && dateField.text.toString().isNotEmpty() && timeField.text.toString().isNotEmpty()) {
-            value.put(TableInfo.TABLE_RESULT_COLUMN_VALUE, textField.text.toString())
-            value.put(TableInfo.TABLE_RESULT_COLUMN_DATETIME, LocalDateTime.of(LocalDate.parse(dateField.text.toString()),LocalTime.parse(timeField.text.toString())).toString())
-            value.put(TableInfo.TABLE_RESULT_COLUMN_TYPE,binding.selectResultType.selectedItem.toString())
-            value.put(TableInfo.TABLE_RESULT_COLUMN_USER,userId)
-            val dataBaseHelper = DataBaseHelper(applicationContext)
-            val db = dataBaseHelper.writableDatabase;
-            db.insertOrThrow(TableInfo.TABLE_RESULT, null, value)
-            Toast.makeText(applicationContext, "Zapisano wynik", Toast.LENGTH_SHORT).show()
+        if (spinner.selectedItem == "ciśnienie krwi") {
+            if (textField.text.toString().isNotEmpty() && dateField.text.toString()
+                    .isNotEmpty() && timeField.text.toString().isNotEmpty()
+            ) {
+                value.put(
+                    TableInfo.TABLE_RESULT_COLUMN_VALUE1,
+                    textField.text.toString().split("/")[0]
+                )
+                value.put(
+                    TableInfo.TABLE_RESULT_COLUMN_VALUE2,
+                    textField.text.toString().split("/")[1]
+                )
+                value.put(
+                    TableInfo.TABLE_RESULT_COLUMN_DATETIME,
+                    LocalDateTime.of(
+                        LocalDate.parse(dateField.text.toString()),
+                        LocalTime.parse(timeField.text.toString())
+                    ).toString()
+                )
+                value.put(
+                    TableInfo.TABLE_RESULT_COLUMN_TYPE,
+                    binding.selectResultType.selectedItem.toString()
+                )
+                value.put(TableInfo.TABLE_RESULT_COLUMN_USER, userId)
+                val dataBaseHelper = DataBaseHelper(applicationContext)
+                val db = dataBaseHelper.writableDatabase;
+                db.insertOrThrow(TableInfo.TABLE_RESULT, null, value)
+                Toast.makeText(applicationContext, "Zapisano wynik", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(applicationContext,"Niepoprawne dane!", Toast.LENGTH_LONG).show()
+            }
         } else {
+            if (textField.text.toString().isNotEmpty() && dateField.text.toString()
+                    .isNotEmpty() && timeField.text.toString().isNotEmpty()
+            ) {
+                value.put(TableInfo.TABLE_RESULT_COLUMN_VALUE1, textField.text.toString())
 
+                value.put(
+                    TableInfo.TABLE_RESULT_COLUMN_DATETIME,
+                    LocalDateTime.of(
+                        LocalDate.parse(dateField.text.toString()),
+                        LocalTime.parse(timeField.text.toString())
+                    ).toString()
+                )
+                value.put(
+                    TableInfo.TABLE_RESULT_COLUMN_TYPE,
+                    binding.selectResultType.selectedItem.toString()
+                )
+                value.put(TableInfo.TABLE_RESULT_COLUMN_USER, userId)
+                val dataBaseHelper = DataBaseHelper(applicationContext)
+                val db = dataBaseHelper.writableDatabase;
+                db.insertOrThrow(TableInfo.TABLE_RESULT, TableInfo.TABLE_RESULT_COLUMN_VALUE2, value)
+                Toast.makeText(applicationContext, "Zapisano wynik", Toast.LENGTH_SHORT).show()
+
+            } else {
+                Toast.makeText(applicationContext,"Niepoprawne dane!", Toast.LENGTH_LONG).show()
+            }
         }
-    }
 
+
+    }
 }

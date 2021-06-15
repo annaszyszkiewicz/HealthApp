@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RaportActivity">
+
+    <CheckBox
+        android:id="@+id/checkPulse"
+        android:layout_width="145dp"
+        android:layout_height="50dp"
+        android:text="Puls"
+        app:layout_constraintBottom_toTopOf="@+id/checkTemperature"
+        app:layout_constraintStart_toStartOf="@+id/checkPressure"
+        app:layout_constraintTop_toBottomOf="@+id/checkPressure" />
+
+    <EditText
+        android:id="@+id/raportEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/checkPressure"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/raportStartDate" />
+
+    <EditText
+        android:id="@+id/raportStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/raportEndDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkPressure"
+        android:layout_width="148dp"
+        android:layout_height="51dp"
+        android:text="Ciśnienie"
+        app:layout_constraintBottom_toTopOf="@+id/checkPulse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/raportEndDate"
+        app:layout_constraintTop_toBottomOf="@+id/raportEndDate" />
+
+    <CheckBox
+        android:id="@+id/checkTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperatura"
+        app:layout_constraintBottom_toTopOf="@+id/checkGlucose"
+        app:layout_constraintStart_toStartOf="@+id/checkPulse"
+        app:layout_constraintTop_toBottomOf="@+id/checkPulse" />
+
+    <CheckBox
+        android:id="@+id/checkGlucose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Poziom glukozy"
+        app:layout_constraintBottom_toTopOf="@+id/checkWeight"
+        app:layout_constraintStart_toStartOf="@+id/checkTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/checkTemperature" />
+
+    <CheckBox
+        android:id="@+id/checkWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Waga"
+        app:layout_constraintBottom_toTopOf="@+id/btnGenerateRaport"
+        app:layout_constraintStart_toStartOf="@+id/checkGlucose"
+        app:layout_constraintTop_toBottomOf="@+id/checkGlucose" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data początkowa"
+        app:layout_constraintBottom_toBottomOf="@+id/raportStartDate"
+        app:layout_constraintEnd_toStartOf="@+id/raportStartDate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/raportStartDate" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data końcowa"
+        app:layout_constraintBottom_toBottomOf="@+id/raportEndDate"
+        app:layout_constraintEnd_toStartOf="@+id/raportEndDate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/raportEndDate" />
+
+    <Button
+        android:id="@+id/btnGenerateRaport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="generate"
+        android:text="Wygeneruj i wyślij email'em"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkWeight" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,15 +19,11 @@ object TableInfo : BaseColumns {
     const val TABLE_RESULT_ID = BaseColumns._ID
     const val TABLE_RESULT_COLUMN_USER = "userid"
     const val TABLE_RESULT_COLUMN_TYPE = "measure"
-    const val TABLE_RESULT_COLUMN_VALUE = "value"
+    const val TABLE_RESULT_COLUMN_VALUE1 = "value1"
+    const val TABLE_RESULT_COLUMN_VALUE2 = "value2"
     const val TABLE_RESULT_COLUMN_DATETIME = "resultdatetime"
 
-    const val TABLE_PRESSURE = "pressure"
-    const val TABLE_PRESSURE_ID = BaseColumns._ID
-    const val TABLE_PRESSURE_COLUMN_USER = "userid"
-    const val TABLE_PRESSURE_COLUMN_SYSTOLIC = "systolic"
-    const val TABLE_PRESSURE_COLUMN_DIASTOLIC = "diastolic"
-    const val TABLE_PRESSURE_COLUMN_DATETIME = "resultdatetime"
+
 }
 
 object BasicCommand {
@@ -44,30 +40,20 @@ object BasicCommand {
 
     const val CREATE_RESULT_TABLE: String =
         "CREATE TABLE IF NOT EXISTS ${TableInfo.TABLE_RESULT} (" +
-		"${TableInfo.TABLE_RESULT_ID} INTEGER PRIMARY KEY, " +
+		        "${TableInfo.TABLE_RESULT_ID} INTEGER PRIMARY KEY, " +
                 "${TableInfo.TABLE_RESULT_COLUMN_USER} INTEGER, " +
                 "${TableInfo.TABLE_RESULT_COLUMN_TYPE} TEXT, " +
-                "${TableInfo.TABLE_RESULT_COLUMN_VALUE} NUMERIC, " +
+                "${TableInfo.TABLE_RESULT_COLUMN_VALUE1} NUMERIC, " +
+                "${TableInfo.TABLE_RESULT_COLUMN_VALUE2} NUMERIC, " +
                 "${TableInfo.TABLE_RESULT_COLUMN_DATETIME} DATETIME, " +
                 " FOREIGN KEY (${TableInfo.TABLE_RESULT_COLUMN_USER}) REFERENCES ${TableInfo.TABLE_USER}(${BaseColumns._ID}))"
 
-    const val CREATE_PRESSURE_TABLE: String =
-        "CREATE TABLE IF NOT EXISTS ${TableInfo.TABLE_PRESSURE} (" +
-                "${TableInfo.TABLE_PRESSURE} INTEGER PRIMARY KEY, " +
-                "${TableInfo.TABLE_PRESSURE_COLUMN_USER} INTEGER, " +
-                "${TableInfo.TABLE_PRESSURE_COLUMN_SYSTOLIC} NUMERIC, " +
-                "${TableInfo.TABLE_PRESSURE_COLUMN_DIASTOLIC} NUMERIC, " +
-                "${TableInfo.TABLE_RESULT_COLUMN_DATETIME} DATETIME, " +
-                " FOREIGN KEY (${TableInfo.TABLE_PRESSURE_COLUMN_USER}) REFERENCES ${TableInfo.TABLE_USER}(${BaseColumns._ID}))"
 }
 
 class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, TableInfo.DATABASE, null, 1) {
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL(BasicCommand.DELETE_RESULT_TABLE)
-        db?.execSQL(BasicCommand.DELETE_USER_TABLE)
         db?.execSQL(BasicCommand.CREATE_USER_TABLE)
         db?.execSQL(BasicCommand.CREATE_RESULT_TABLE)
-        db?.execSQL(BasicCommand.CREATE_PRESSURE_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -76,13 +62,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, TableInfo.DAT
 
     override fun onOpen(db: SQLiteDatabase?) {
         super.onOpen(db)
-        /*
-        db?.execSQL(BasicCommand.DELETE_RESULT_TABLE)
-        db?.execSQL(BasicCommand.DELETE_USER_TABLE)
-        db?.execSQL(BasicCommand.CREATE_USER_TABLE)
-        db?.execSQL(BasicCommand.CREATE_RESULT_TABLE)
-        db?.execSQL(BasicCommand.CREATE_PRESSURE_TABLE)
-         */
+        //db?.execSQL(BasicCommand.DELETE_RESULT_TABLE)
+        //db?.execSQL(BasicCommand.CREATE_RESULT_TABLE)
     }
 
 }

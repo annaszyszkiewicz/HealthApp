@@ -10,59 +10,58 @@
         android:id="@+id/btnHistoryStats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:onClick="onClickHistoryStats"
         android:text="@string/btnHistoryStats"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btnAddResult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDailyStats" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDailyStats"
+        tools:layout_editor_absoluteX="20dp" />
 
     <Button
         android:id="@+id/btnUserSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:onClick="onClickReminders"
         android:text="@string/btnReminders"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddResult" />
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddResult"
+        tools:layout_editor_absoluteX="20dp" />
 
     <Button
         android:id="@+id/btnAddResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:onClick="onClickAddResults"
         android:text="@string/btnAddResults"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btnUserSettings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHistoryStats" />
+        app:layout_constraintTop_toBottomOf="@+id/btnHistoryStats"
+        tools:layout_editor_absoluteX="20dp" />
 
     <TextView
         android:id="@+id/txtDailyStats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btnHistoryStats"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="20dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="onClickRaport"
+        android:text="Raport"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnUserSettings"
+        app:layout_constraintStart_toStartOf="@+id/btnUserSettings"
+        app:layout_constraintTop_toBottomOf="@+id/btnUserSettings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

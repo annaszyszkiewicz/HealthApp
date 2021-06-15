@@ -65,10 +65,10 @@
     <string-array name="spinnerType">
         <item>Wyłączone</item>
         <item>Waga</item>
-        <item>Ciśnienie krwi</item>
+        <item>Ciśnienie krwi (sk)</item>
+        <item>Ciśnienie krwi (roz)</item>
         <item>Poziom glukozy</item>
         <item>Temperatura</item>
-        <item>Wypita woda</item>
     </string-array>
 
     <string-array name="plotSeriesSpinnerType">
@@ -80,7 +80,7 @@
     <string-array name="plotMultiValue">
         <item>Min</item>
         <item>Max</item>
-        <item>Average</item>
-        <item>All</item>
+        <item>Średnia</item>
+        <item>Wszystkie</item>
     </string-array>
 </resources>

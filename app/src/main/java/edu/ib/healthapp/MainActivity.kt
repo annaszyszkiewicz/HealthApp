@@ -47,6 +47,9 @@ class MainActivity : AppCompatActivity() {
 //            .addTag("description:napis")
 //            .build();
 //        WorkManager.getInstance(this).enqueue(oneTimeWorkRequest)
+
+        // WorkManager.getInstance(this).cancelAllWork()
+        WorkManager.getInstance(this).pruneWork()
     }
 
     fun onClickCreateUser(view: View) {

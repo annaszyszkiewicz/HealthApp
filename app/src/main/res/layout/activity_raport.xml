@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20px"
     tools:context=".activity.RaportActivity">
 
     <CheckBox
@@ -17,7 +18,7 @@
 
     <EditText
         android:id="@+id/raportEndDate"
-        android:layout_width="wrap_content"
+        android:layout_width="450px"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
@@ -29,7 +30,7 @@
 
     <EditText
         android:id="@+id/raportStartDate"
-        android:layout_width="wrap_content"
+        android:layout_width="450px"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
@@ -81,10 +82,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10px"
         android:text="Data początkowa"
         app:layout_constraintBottom_toBottomOf="@+id/raportStartDate"
         app:layout_constraintEnd_toStartOf="@+id/raportStartDate"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/raportStartDate" />
 
@@ -92,10 +95,12 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10px"
         android:text="Data końcowa"
         app:layout_constraintBottom_toBottomOf="@+id/raportEndDate"
         app:layout_constraintEnd_toStartOf="@+id/raportEndDate"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/raportEndDate" />
 

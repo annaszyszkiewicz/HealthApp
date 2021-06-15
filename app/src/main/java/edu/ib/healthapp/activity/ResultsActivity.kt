@@ -93,6 +93,13 @@ class ResultsActivity : AppCompatActivity() {
                 val db = dataBaseHelper.writableDatabase;
                 db.insertOrThrow(TableInfo.TABLE_RESULT, null, value)
                 Toast.makeText(applicationContext, "Zapisano wynik", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(applicationContext, ResultInterpretationActivity::class.java)
+                intent.putExtra("type", binding.selectResultType.selectedItem.toString())
+                intent.putExtra("value", binding.editTxtResult.text.toString())
+                intent.putExtra("user_id", userId)
+                intent.putExtra("unit", binding.txtUnit.text.toString())
+                startActivity(intent)
             } else {
                 Toast.makeText(applicationContext,"Niepoprawne dane!", Toast.LENGTH_LONG).show()
             }
@@ -118,6 +125,7 @@ class ResultsActivity : AppCompatActivity() {
                 val db = dataBaseHelper.writableDatabase;
                 db.insertOrThrow(TableInfo.TABLE_RESULT, TableInfo.TABLE_RESULT_COLUMN_VALUE2, value)
                 Toast.makeText(applicationContext, "Zapisano wynik", Toast.LENGTH_SHORT).show()
+
                 val intent = Intent(applicationContext, ResultInterpretationActivity::class.java)
                 intent.putExtra("type", binding.selectResultType.selectedItem.toString())
                 intent.putExtra("value", binding.editTxtResult.text.toString())

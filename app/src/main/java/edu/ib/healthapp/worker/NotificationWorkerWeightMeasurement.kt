@@ -18,7 +18,7 @@ import java.time.LocalTime
 
 class NotificationWorkerWeightMeasurement(private val context: Context, val params: WorkerParameters): Worker(context,params) {
     override fun doWork(): Result {
-        if(!(LocalTime.now().hour > 22 || LocalTime.now().hour < 6)){
+        if(!(LocalTime.now().hour >= 22 || LocalTime.now().hour <= 6)){
             sendNotification()
         }
         return success()

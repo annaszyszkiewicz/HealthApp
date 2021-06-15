@@ -37,7 +37,7 @@ class ResultInterpretationActivity : AppCompatActivity() {
         var valuePressure1 = 0.0
         var valuePressure2 = 0.0
 
-        if (type == "ciśnienie") {
+        if (type == "ciśnienie krwi") {
             val valueTable = value.split("/")
             valuePressure1 = valueTable[0].toDouble()
             valuePressure2 = valueTable[1].toDouble()
@@ -67,6 +67,7 @@ class ResultInterpretationActivity : AppCompatActivity() {
         val text = binding.txtInterpetation
 
         val yearsBetween = ChronoUnit.YEARS.between(dateOfBirth, LocalDate.now())
+
         when (type) {
             "tętno" -> {
                 if (yearsBetween < 1) {
@@ -77,7 +78,7 @@ class ResultInterpretationActivity : AppCompatActivity() {
                     } else {
                         text.text = getString(R.string.lowHeartRate)
                     }
-                } else if (yearsBetween in 1..17) {
+                } else if (yearsBetween in 1..10) {
                     if (valueNoPressure > 105) {
                         text.text = getString(R.string.highHeartRate)
                     } else if (valueNoPressure in 95.0..105.0) {

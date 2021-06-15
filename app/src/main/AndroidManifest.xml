@@ -14,10 +14,7 @@
         <activity
             android:name=".activity.PlotStatsActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.RemindersSetterActivity" />
         <activity android:name=".activity.HistoryStatsActivity" />
-        <activity android:name=".activity.SettingsActivity" />
-        <activity android:name=".activity.MedicinesActivity" />
         <activity android:name=".activity.AllRemindersActivity" />
         <activity android:name=".activity.ResultInterpretationActivity" />
         <activity android:name=".activity.ResultsActivity" />

@@ -45,6 +45,7 @@ object BasicCommand {
 
     const val DELETE_USER_TABLE = "DROP TABLE IF EXISTS ${TableInfo.TABLE_USER}"
     const val DELETE_RESULT_TABLE = "DROP TABLE IF EXISTS ${TableInfo.TABLE_RESULT}"
+    const val DELETE_REMINDER_TABLE = "DROP TABLE IF EXISTS ${TableInfo.TABLE_REMINDER}"
 
     const val CREATE_RESULT_TABLE: String =
         "CREATE TABLE IF NOT EXISTS ${TableInfo.TABLE_RESULT} (" +
@@ -80,14 +81,15 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, TableInfo.DAT
 
     override fun onOpen(db: SQLiteDatabase?) {
         super.onOpen(db)
-        /*
-        db?.execSQL(BasicCommand.DELETE_RESULT_TABLE)
-        db?.execSQL(BasicCommand.DELETE_USER_TABLE)
-        db?.execSQL(BasicCommand.CREATE_USER_TABLE)
-        db?.execSQL(BasicCommand.CREATE_RESULT_TABLE)
-        db?.execSQL(BasicCommand.CREATE_PRESSURE_TABLE)
-         */
-        db?.execSQL(BasicCommand.CREATE_REMINDER_TABLE)
+
+//        db?.execSQL(BasicCommand.DELETE_USER_TABLE)
+//        db?.execSQL(BasicCommand.DELETE_RESULT_TABLE)
+//        db?.execSQL(BasicCommand.DELETE_REMINDER_TABLE)
+//        db?.execSQL(BasicCommand.CREATE_USER_TABLE)
+//        db?.execSQL(BasicCommand.CREATE_RESULT_TABLE)
+//        db?.execSQL(BasicCommand.CREATE_REMINDER_TABLE)
+
+
     }
 
 }

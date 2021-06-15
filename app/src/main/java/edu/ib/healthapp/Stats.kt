@@ -212,9 +212,36 @@ class Stats(val uId: Int,val db: SQLiteDatabase) : Fragment() {
                 }
                 Type.InsertMonth.data->{
                     data = DataOptions(Type.InsertMonth)
+                    val startDateOfYear=LocalDate.of(editText1.text.toString().toInt(),1,1)
+                    val startDate=startDateOfYear.minusDays(startDateOfYear.dayOfWeek.value.toLong()).plusMonths(editText2.text.toString().toLong())
+                    val endDate=startDate.plusMonths(1L).minusDays(1L)
+                    data.startDate=startDate
+                    data.endDate=endDate
+                    data.series1= GraphType.getGraphType(spType1.selectedItem.toString());
+                    data.series1DataType= DataType.getDataType(spDatatype1.selectedItem.toString())
+                    data.series1Option= SeriesOption.getSeriesOption(spMultiData1.selectedItem.toString())
+                    data.series2= GraphType.getGraphType(spType2.selectedItem.toString());
+                    data.series2DataType= DataType.getDataType(spDatatype2.selectedItem.toString())
+                    data.series2Option= SeriesOption.getSeriesOption(spMultiData2.selectedItem.toString())
+                    data.series3= GraphType.getGraphType(spType3.selectedItem.toString());
+                    data.series3DataType= DataType.getDataType(spDatatype3.selectedItem.toString())
+                    data.series3Option= SeriesOption.getSeriesOption(spMultiData3.selectedItem.toString())
                 }
                 Type.DataBetween.data->{
                     data=DataOptions(Type.DataBetween)
+                    val startDate=LocalDate.parse(editText1.text.toString())
+                    val endDate=LocalDate.parse(editText2.text.toString())
+                    data.startDate=startDate
+                    data.endDate=endDate
+                    data.series1= GraphType.getGraphType(spType1.selectedItem.toString());
+                    data.series1DataType= DataType.getDataType(spDatatype1.selectedItem.toString())
+                    data.series1Option= SeriesOption.getSeriesOption(spMultiData1.selectedItem.toString())
+                    data.series2= GraphType.getGraphType(spType2.selectedItem.toString());
+                    data.series2DataType= DataType.getDataType(spDatatype2.selectedItem.toString())
+                    data.series2Option= SeriesOption.getSeriesOption(spMultiData2.selectedItem.toString())
+                    data.series3= GraphType.getGraphType(spType3.selectedItem.toString());
+                    data.series3DataType= DataType.getDataType(spDatatype3.selectedItem.toString())
+                    data.series3Option= SeriesOption.getSeriesOption(spMultiData3.selectedItem.toString())
                 }
                 else ->data=null;
             }

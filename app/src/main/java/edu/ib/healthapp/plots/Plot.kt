@@ -233,8 +233,10 @@ class Plot<X,Y>: ViewGroup {
                         val data = series.getData(j)
                         xMaxValue= xMaxValue.coerceAtLeast(data.x as Double)
                         xMinValue= xMinValue.coerceAtMost(data.x as Double)
-                        yMaxValue= yMaxValue.coerceAtLeast(data.y as Double)
-                        yMinValue= yMinValue.coerceAtMost(data.y as Double)
+                        if(data.y!=null) {
+                            yMaxValue = yMaxValue.coerceAtLeast(data.y as Double)
+                            yMinValue = yMinValue.coerceAtMost(data.y as Double)
+                        }
                     }
                 }
 
@@ -269,11 +271,17 @@ class Plot<X,Y>: ViewGroup {
             for(i in 0 until seriesList.size){
                 for(j in 0 until seriesList[i].dataList.size){
                     if(seriesList[i].dataList[j].y is Double){
-                        maxValue = max(maxValue, seriesList[i].dataList[j].y as Double)
-                        minValue = min(minValue, seriesList[i].dataList[j].y as Double)
+                        if(seriesList[i].dataList[j].y!=null) {
+                            maxValue = max(maxValue, seriesList[i].dataList[j].y as Double)
+                            minValue = min(minValue, seriesList[i].dataList[j].y as Double)
+                        }
                     } else {
-                        maxValue = max(maxValue, (seriesList[i].dataList[j].y as Int).toDouble())
-                        minValue = min(minValue, (seriesList[i].dataList[j].y as Int).toDouble())
+                        if(seriesList[i].dataList[j].y!=null) {
+                            maxValue =
+                                max(maxValue, (seriesList[i].dataList[j].y as Int).toDouble())
+                            minValue =
+                                min(minValue, (seriesList[i].dataList[j].y as Int).toDouble())
+                        }
                     }
                     if(seriesList[i].dataList[j] != seriesList[0].dataList[j]){
                         throw PlotException("Wrong data")
@@ -294,8 +302,10 @@ class Plot<X,Y>: ViewGroup {
                     for (j in 0 until series.dataList.size) {
                         val data = series.getData(j)
 
-                        yMaxValue= yMaxValue.coerceAtLeast(data.y as Double)
-                        yMinValue= yMinValue.coerceAtMost(data.y as Double)
+                        if(data.y!=null) {
+                            yMaxValue = yMaxValue.coerceAtLeast(data.y as Double)
+                            yMinValue = yMinValue.coerceAtMost(data.y as Double)
+                        }
                     }
                 }
 

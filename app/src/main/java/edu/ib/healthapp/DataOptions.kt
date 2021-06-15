@@ -87,14 +87,14 @@ enum class SeriesOption(val label:String){
     }
 
 }
-enum class DataType(val label:String){
-    Off("Wyłączone"),
-    Weight("Waga"),
-    PressureS("Ciśnienie krwi (sk)"),
-    PressureD("Ciśnienie krwi (roz)"),
-    Glucose("Poziom glukozy"),
-    Temperature("Temperatura"),
-    Water("Wypita woda");
+enum class DataType(val label:String,val database:String){
+    Off("Wyłączone",""),
+    Weight("Waga","waga"),
+    PressureS("Ciśnienie krwi (sk)","ciśnienie krwi"),
+    PressureD("Ciśnienie krwi (roz)","ciśnienie krwi"),
+    Glucose("Poziom glukozy","poziom glukozy"),
+    Temperature("Temperatura","temperatura ciała"),
+    Water("Wypita woda","");
     companion object{
         fun getDataType(label:String):DataType{
             return when(label){

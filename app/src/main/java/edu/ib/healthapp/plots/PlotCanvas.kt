@@ -86,7 +86,7 @@ class PlotCanvas<X, Y>(var plot: Plot<X, Y>, context: Context?) : View(context) 
             for (i in 0 until dataCount) {
                 for (j in 0 until seriesList[i].dataList.size) {
                     if(seriesList[i].getData(j).y==null) continue;
-                    val xCoordinate = width / (dataCount + 1) * (i + 1)
+                    val xCoordinate = width / (seriesList[i].dataList.size + 1) * (j + 1)
                     val yCoordinate =
                         height * ((seriesList[i].dataList[j].y as Double - min) / range)
                     when (seriesList[i].type) {
@@ -99,17 +99,23 @@ class PlotCanvas<X, Y>(var plot: Plot<X, Y>, context: Context?) : View(context) 
                             );
                         }
                         GraphType.Linear -> {
-                            if (i != 0) {
-                                val lastXCoordinate = width / (dataCount + 1) * (j);
-                                val lastYCoordinate =
-                                    height * ((seriesList[i].dataList[j - 1].y as Double - min) / range)
-                                canvas.drawLine(
-                                    lastXCoordinate.toFloat(),
-                                    lastYCoordinate.toFloat(),
-                                    xCoordinate.toFloat(),
-                                    yCoordinate.toFloat(),
-                                    seriesList[i].paint
-                                );
+                            if (j != 0) {
+                                val lastXCoordinate = width / (seriesList[i].dataList.size + 1) * (j);
+                                var k=j
+                                while(k>0 && seriesList[i].dataList[k - 1].y==null){
+                                    k--;
+                                }
+                                if(k!=0) {
+                                    val lastYCoordinate =
+                                        height * ((seriesList[i].dataList[k - 1].y as Double - min) / range)
+                                    canvas.drawLine(
+                                        lastXCoordinate.toFloat(),
+                                        lastYCoordinate.toFloat(),
+                                        xCoordinate.toFloat(),
+                                        yCoordinate.toFloat(),
+                                        seriesList[i].paint
+                                    );
+                                }
                             }
                         }
                         GraphType.CategoryGraph -> {

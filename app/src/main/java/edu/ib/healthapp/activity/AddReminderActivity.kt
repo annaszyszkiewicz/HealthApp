@@ -29,11 +29,14 @@ class AddReminderActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
+
         binding.editTextReminderTime.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).toString())
         binding.editTextReminderInterval.setText("1")
 
         val intent = intent;
         if (intent.hasExtra("user_id")) userId = intent.getIntExtra("user_id", 0)
+        WorkManager.getInstance(this).pruneWork()
     }
 
     fun onClickSaveReminder(view: View) {

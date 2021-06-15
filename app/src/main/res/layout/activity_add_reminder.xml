@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AddReminderActivity">
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:text="@string/txt_reminder_type"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerReminderType"
+        app:layout_constraintStart_toStartOf="@+id/spinnerReminderType"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Spinner
+        android:id="@+id/spinnerReminderType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70px"
+        android:entries="@array/spinner_reminder_type"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:text="@string/txt_reminder_time"
+        app:layout_constraintBottom_toTopOf="@+id/editTextReminderTime"
+        app:layout_constraintStart_toStartOf="@+id/editTextReminderTime"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerReminderType" />
+
+    <EditText
+        android:id="@+id/editTextReminderTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70px"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:text="@string/txt_reminder_interval"
+        app:layout_constraintBottom_toTopOf="@+id/editTextReminderInterval"
+        app:layout_constraintStart_toStartOf="@+id/editTextReminderInterval"
+        app:layout_constraintTop_toBottomOf="@+id/editTextReminderTime" />
+
+    <Spinner
+        android:id="@+id/spinnerReminderInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70px"
+        android:entries="@array/spinner_reminder_interval"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/editTextReminderInterval" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:text="@string/txt_reminder_info"
+        app:layout_constraintBottom_toTopOf="@+id/editTextReminderInfo"
+        app:layout_constraintStart_toStartOf="@+id/editTextReminderInfo"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerReminderInterval" />
+
+    <Button
+        android:id="@+id/btnSaveReminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:onClick="onClickSaveReminder"
+        android:text="@string/btnSaveReminder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextReminderInfo" />
+
+    <EditText
+        android:id="@+id/editTextReminderInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120px"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveReminder"
+        app:layout_constraintStart_toStartOf="@+id/btnSaveReminder"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <EditText
+        android:id="@+id/editTextReminderInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerReminderInterval"
+        app:layout_constraintStart_toStartOf="@+id/spinnerReminderInterval"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

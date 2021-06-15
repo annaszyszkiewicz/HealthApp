@@ -1,6 +1,5 @@
 package edu.ib.healthapp
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater
 import android.view.View;
@@ -30,8 +29,6 @@ class ResultAdapter(val userID: Int, val db: SQLiteDatabase) :
         cursor.close()
         return rows
     }
-
-
 
     override fun onBindViewHolder(holder: ResultViewHolder, position: Int) {
         val id = holder.view.findViewById<TextView>(R.id.txtId)

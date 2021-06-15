@@ -14,9 +14,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/editTxtResult"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toEndOf="@+id/editTxtResult"
-        app:layout_constraintTop_toTopOf="@+id/editTxtResult" />
+        app:layout_constraintTop_toTopOf="@+id/editTxtResult"
+        app:layout_constraintVertical_bias="0.523" />
 
     <EditText
         android:id="@+id/editTxtResultTime"
@@ -59,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:ems="10"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editTxtResultDate"
         app:layout_constraintEnd_toEndOf="@+id/editTxtResultDate"
         app:layout_constraintStart_toStartOf="@+id/editTxtResultDate"
@@ -72,7 +74,7 @@
         android:text="@string/btnSaveResult"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTxtResultTime" />
 

@@ -1,6 +1,7 @@
 package edu.ib.healthapp.activity
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,6 +25,7 @@ class ResultsActivity : AppCompatActivity() {
         binding = ActivityResultsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         binding.editTxtResultDate.setText(LocalDate.now().toString())
         binding.editTxtResultTime.setText(
             LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).toString()
@@ -54,37 +56,6 @@ class ResultsActivity : AppCompatActivity() {
                 }
 
             }
-
-        val dbHelper = DataBaseHelper(applicationContext)
-        val db = dbHelper.writableDatabase
-
-        val createResultToast =
-            Toast.makeText(applicationContext, "Zapisano wynik", Toast.LENGTH_SHORT)
-/*
-        binding.btnSaveResult.setOnClickListener {
-            val result_value = binding.editTxtResult.text.toString()
-            val result_date = binding.editTxtResultDate.text.toString()
-            val result_time = binding.editTxtResultTime.text.toString()
-
-            val value = ContentValues()
-
-            value.put(TableInfo.TABLE_COLUMN_VALUE, result_value)
-            value.put(TableInfo.TABLE_COLUMN_DATE, result_date)
-            value.put(TableInfo.TABLE_COLUMN_TIME, result_time)
-
-            if (result_value.isNotEmpty() && result_time.isNotEmpty() && result_date.isNotEmpty()) {
-                db.insertOrThrow(TableInfo.TABLE_RESULT, null, value)
-                createResultToast.show()
-            } else {
-                Toast.makeText(
-                    applicationContext,
-                    "Nie wprowadzono potrzebnych danych",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-
- */
     }
 
     fun add(view: View) {
@@ -147,7 +118,12 @@ class ResultsActivity : AppCompatActivity() {
                 val db = dataBaseHelper.writableDatabase;
                 db.insertOrThrow(TableInfo.TABLE_RESULT, TableInfo.TABLE_RESULT_COLUMN_VALUE2, value)
                 Toast.makeText(applicationContext, "Zapisano wynik", Toast.LENGTH_SHORT).show()
-
+                val intent = Intent(applicationContext, ResultInterpretationActivity::class.java)
+                intent.putExtra("type", binding.selectResultType.selectedItem.toString())
+                intent.putExtra("value", binding.editTxtResult.text.toString())
+                intent.putExtra("user_id", userId)
+                intent.putExtra("unit", binding.txtUnit.text.toString())
+                startActivity(intent)
             } else {
                 Toast.makeText(applicationContext,"Niepoprawne dane!", Toast.LENGTH_LONG).show()
             }

@@ -83,4 +83,78 @@
         <item>Średnia</item>
         <item>Wszystkie</item>
     </string-array>
+
+    <!--    reminders-->
+    <string name="no_cardetails">Nie utworzono jeszcze powiaodmień</string>
+    <string name="txt_reminder_type">Przypomnienie o:</string>
+    <string-array name="spinner_reminder_type">
+        <item>pomiarze ciśnienia</item>
+        <item>pomiarze tętna</item>
+        <item>pomiarze glukozy</item>
+        <item>pomiarze wagi</item>
+        <item>wzięciu leków</item>
+        <item>przygotowaniu posiłków</item>
+        <item>piciu wody</item>
+    </string-array>
+    <string name="txt_reminder_time">Godzina:</string>
+    <string name="txt_reminder_interval">Powtórz co:</string>
+    <string-array name="spinner_reminder_interval">
+        <item>godzinę/godziny</item>
+        <item>dzień/dni</item>
+        <item>tydzień/tygodnie</item>
+    </string-array>
+    <string name="txt_reminder_info">Dodatkowe informacje:</string>
+    <string name="btnSaveReminder">ZAPISZ</string>
+
+
+    <!--    notifications channel-->
+
+    <string name="channel_name_pressure_measurement">Pressure Measurement Notifications</string>
+    <string name="channel_description_pressure_measurement"> </string>
+
+    <string name="channel_name_pulse">Pulse Measurement Notifications</string>
+    <string name="channel_description_pulse"> </string>
+
+    <string name="channel_name_sugar">Glucose Measurement Notifications</string>
+    <string name="channel_description_sugar"> </string>
+
+    <string name="channel_name_weight">Weight Measurement Notifications</string>
+    <string name="channel_description_weight"> </string>
+
+    <string name="channel_name_medicines">Medicines Notifications</string>
+    <string name="channel_description_medicines"> </string>
+
+    <string name="channel_name_food">Meal Preparation Notifications</string>
+    <string name="channel_description_food"> </string>
+
+    <string name="channel_name_water">Drinking Water Notifications</string>
+    <string name="channel_description_water"> </string>
+
+
+    <!-- results interpretation-->
+
+    <string name="normal_result">Wynik w normie</string>
+
+    <string name="highHeartRate">Tachykardia - tętno jest zbyt wysokie</string>
+    <string name="lowHeartRate">Bradykardia - tętno jest zbyt niskie</string>
+
+    <string name="lowSugar">Zbyt niski poziom glukozy</string>
+    <string name="hypoglycemia">Wynik jest niebezpiecznie niski i może wskazywać na hipoglikemię. Skontaktuj się z lekarzem.</string>
+    <string name="highSugar">Zbyt wysoki poziom glukozy. Jeśli pomiar nie był wykonany na czczo, pacjent choruje ca cukrzycę, pacjent przebył zawał lub udar mózgu, poziom glukozy może wynosić do 140 mg/dL. Pomiar lepiej jest wykonać na czczo."</string>
+    <string name="highSugarSenior">Zbyt wysoki poziom glukozy. "Jesli pomiar nie był wykonywany na czczo, poziom glukozy może wynosić do 180 mg/dL. Poziom lepiej jest wykonać na czczo.""</string>
+
+    <string name="fever">Wynik pomiaru wskazuje na gorączkę. Warto skontaktować się z lekarzem.</string>
+    <string name="highTemp">Stan podgorączkowy - temperatura ciała jest zbyt wysoka</string>
+    <string name="lowTemp">Za niska temperatura ciała</string>
+
+    <string name="underweight">Wynik wskazuje na niedowagę</string>
+    <string name="overweight">Wynik wskazuje na nadwagę</string>
+    <string name="obese1">Wynik wskazuje na otyłość I stopnia</string>
+    <string name="obese2">Wynik wskazuje na otyłość II stopnia</string>
+    <string name="obese3">Wynik wskazuje na otyłość III stopnia</string>
+
+    <string name="highPressure">Podwyższone ciśnienie tętnicze</string>
+    <string name="lowPressure">Zbyt niskie ciśnienie tętnicze</string>
+
+
 </resources>

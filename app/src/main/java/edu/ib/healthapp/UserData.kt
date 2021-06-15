@@ -23,6 +23,14 @@ object TableInfo : BaseColumns {
     const val TABLE_RESULT_COLUMN_VALUE2 = "value2"
     const val TABLE_RESULT_COLUMN_DATETIME = "resultdatetime"
 
+    const val TABLE_REMINDER = "reminder"
+    const val TABLE_REMINDER_ID = BaseColumns._ID
+    const val TABLE_REMINDER_COLUMN_USER = "userid"
+    const val TABLE_REMINDER_COLUMN_TYPE = "remindertype"
+    const val TABLE_REMINDER_COLUMN_WORKER_MOST = "workeridmost"
+    const val TABLE_REMINDER_COLUMN_WORKER_LEAST = "workeridleast"
+    const val TABLE_REMINDER_COLUMN_DESCRIPTION = "description"
+
 
 }
 
@@ -48,12 +56,22 @@ object BasicCommand {
                 "${TableInfo.TABLE_RESULT_COLUMN_DATETIME} DATETIME, " +
                 " FOREIGN KEY (${TableInfo.TABLE_RESULT_COLUMN_USER}) REFERENCES ${TableInfo.TABLE_USER}(${BaseColumns._ID}))"
 
+    const val CREATE_REMINDER_TABLE: String =
+        "CREATE TABLE IF NOT EXISTS ${TableInfo.TABLE_REMINDER} (" +
+                "${TableInfo.TABLE_REMINDER_ID} INTEGER PRIMARY KEY, " +
+                "${TableInfo.TABLE_REMINDER_COLUMN_USER} INTEGER, " +
+                "${TableInfo.TABLE_REMINDER_COLUMN_TYPE} TEXT, " +
+                "${TableInfo.TABLE_REMINDER_COLUMN_WORKER_MOST} INTEGER, " +
+                "${TableInfo.TABLE_REMINDER_COLUMN_WORKER_LEAST} INTEGER, " +
+                "${TableInfo.TABLE_REMINDER_COLUMN_DESCRIPTION} TEXT, " +
+                " FOREIGN KEY (${TableInfo.TABLE_RESULT_COLUMN_USER}) REFERENCES ${TableInfo.TABLE_USER}(${BaseColumns._ID}))"
 }
 
 class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, TableInfo.DATABASE, null, 1) {
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(BasicCommand.CREATE_USER_TABLE)
         db?.execSQL(BasicCommand.CREATE_RESULT_TABLE)
+        db?.execSQL(BasicCommand.CREATE_REMINDER_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -62,8 +80,14 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, TableInfo.DAT
 
     override fun onOpen(db: SQLiteDatabase?) {
         super.onOpen(db)
-        //db?.execSQL(BasicCommand.DELETE_RESULT_TABLE)
-        //db?.execSQL(BasicCommand.CREATE_RESULT_TABLE)
+        /*
+        db?.execSQL(BasicCommand.DELETE_RESULT_TABLE)
+        db?.execSQL(BasicCommand.DELETE_USER_TABLE)
+        db?.execSQL(BasicCommand.CREATE_USER_TABLE)
+        db?.execSQL(BasicCommand.CREATE_RESULT_TABLE)
+        db?.execSQL(BasicCommand.CREATE_PRESSURE_TABLE)
+         */
+        db?.execSQL(BasicCommand.CREATE_REMINDER_TABLE)
     }
 
 }

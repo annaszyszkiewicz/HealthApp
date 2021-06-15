@@ -16,7 +16,7 @@ class UserAdapter(val context: Context, val db: SQLiteDatabase) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.activity_recycler_item, parent, false)
+            .inflate(R.layout.user_item, parent, false)
         return UserViewHolder(itemView)
     }
 
